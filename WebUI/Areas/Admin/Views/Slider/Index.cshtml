@@ -1,1 +1,48 @@
-﻿
+﻿@model List<ResultSliderDto>
+<h4 class="page-title">Slider Features</h4>
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">All Features</div>
+		<a class="btn btn-info" asp-action="SliderAdd" asp-controller="Slider" asp-area="Admin"><i class="la la-plus"></i> Add New Feature</a>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+                    <th scope="col">Slider Image</th>
+					<th scope="col">Slider Title</th>
+					<th scope="col">Slider Description</th>
+					<th scope="col">Button Url</th>
+					<th scope="col">Is Active</th>
+					<th scope="col">Update</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model)
+				{	
+					<tr>
+                        <td>@item.SliderId</td>
+						<td><img width="25" height="25" src="@item.ImageUrl" alt="@item.SliderTitle" /></td>
+						<td>@item.SliderTitle</td>
+						<td>@item.SliderDescription</td>
+						<td><a href="@item.ButtonUrl" class="btn btn-primary" target="_blank">@item.ButtonLabel <i class="la la-external-link"></i></a></td>
+						<td>
+							@if (item.FeatureStatus)
+							{
+								<span class="badge badge-success">Active</span>
+							}
+							else
+							{
+								<span class="badge badge-danger">Passive</span>
+							}
+						</td>
+						<td><a asp-area="Admin" asp-controller="Slider" asp-action="SliderUpdate" asp-route-sliderId="@item.SliderId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
+						<td><a asp-area="Admin" asp-controller="Slider" asp-action="SliderDelete" asp-route-sliderId="@item.SliderId" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
