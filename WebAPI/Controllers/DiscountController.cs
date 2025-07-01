@@ -35,6 +35,22 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
+        [HttpGet("DiscountCount")]
+        public IActionResult DiscountCount()
+        {
+            var count = _discountService.TGetDiscountCount();
+            return Ok(new { Count = count });
+        }[HttpGet("ActiveDiscountCount")]
+        public IActionResult ActiveDiscountCount()
+        {
+            var count = _discountService.TGetActiveDiscountCount();
+            return Ok(new { Count = count });
+        }[HttpGet("InActiveDiscountCount")]
+        public IActionResult InActiveDiscountCount()
+        {
+            var count = _discountService.TGetInActiveDiscountCount();
+            return Ok(new { Count = count });
+        }
         [HttpDelete("{id}")]
         public IActionResult DiscountDelete(int id)
         {

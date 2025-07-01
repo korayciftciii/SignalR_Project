@@ -50,6 +50,12 @@ builder.Services.AddScoped<ISocialLinkDAL, EFSocialLinkDAL>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<ITestimonialDAL, EFTestimonialDAL>();
 
+builder.Services.AddScoped<IOrderService, OrderManager>();
+builder.Services.AddScoped<IOrderDAL, EFOrderDAL>();
+
+builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
+builder.Services.AddScoped<IOrderDetailDAL, EFOrderDetailDAL>();
+
 // Add services to the container.
 
 builder.Services.AddControllers();

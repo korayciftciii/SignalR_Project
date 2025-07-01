@@ -35,6 +35,22 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
+        [HttpGet("SliderCount")]
+        public IActionResult SliderCount()
+        {
+            var count = _sliderService.TGetSliderCount();
+            return Ok(new { Count = count });
+        }[HttpGet("ActiveSliderCount")]
+        public IActionResult ActiveSliderCount()
+        {
+            var count = _sliderService.TGetActiveSliderCount();
+            return Ok(new { Count = count });
+        }[HttpGet("InActiveSliderCount")]
+        public IActionResult InActiveSliderCount()
+        {
+            var count = _sliderService.TGetInActiveSliderCount();
+            return Ok(new { Count = count });
+        }
         [HttpDelete("{id}")]
         public IActionResult SliderDelete(int id)
         {

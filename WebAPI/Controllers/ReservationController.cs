@@ -36,6 +36,22 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
+        [HttpGet("ReservationCount")]
+        public IActionResult ReservationCount()
+        {
+            var count = _reservationService.TGetReservationCount();
+            return Ok(new { Count = count });
+        }[HttpGet("ActiveReservationCount")]
+        public IActionResult ActiveReservationCount()
+        {
+            var count = _reservationService.TGetActiveReservationCount();
+            return Ok(new { Count = count });
+        }[HttpGet("InActiveReservationCount")]
+        public IActionResult InActiveReservationCount()
+        {
+            var count = _reservationService.TGetInActiveReservationCount();
+            return Ok(new { Count = count });
+        }
         [HttpPost]
         public IActionResult ReservationAdd(CreateReservationDto reservation)
         {

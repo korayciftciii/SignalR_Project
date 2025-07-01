@@ -24,5 +24,7 @@ namespace Web.DataAccessLayer.Concrete
         public DbSet<Reservation>Reservations {get; set;}
         public DbSet<SocialLink> SocialLinks { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

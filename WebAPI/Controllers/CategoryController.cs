@@ -31,6 +31,18 @@ namespace WebAPI.Controllers
             var count = _categoryService.TGetCategoryCount();
             return Ok(new { Count = count });
         }
+        [HttpGet("ActiveCategoryCount")]
+        public IActionResult ActiveCategoryCount()
+        {
+            var count = _categoryService.TGetActiveCategoryCount();
+            return Ok(new { Count = count });
+        }
+        [HttpGet("InActiveCategoryCount")]
+        public IActionResult InActiveCategoryCount()
+        {
+            var count = _categoryService.TGetInActiveCategoryCount();
+            return Ok(new { Count = count });
+        }
         [HttpGet("{id}")]
         public IActionResult CategoryGetById(int id)
         {

@@ -36,7 +36,22 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
-
+        [HttpGet("TestimonialCount")]
+        public IActionResult TestimonialCount()
+        {
+            var count = _testimonialService.TGetTestimonialCount();
+            return Ok(new { Count = count });
+        }[HttpGet("ActiveTestimonialCount")]
+        public IActionResult ActiveTestimonialCount()
+        {
+            var count = _testimonialService.TGetActiveTestimonialCount();
+            return Ok(new { Count = count });
+        }[HttpGet("InActiveTestimonialCount")]
+        public IActionResult InActiveTestimonialCount()
+        {
+            var count = _testimonialService.TGetInActiveTestimonialCount();
+            return Ok(new { Count = count });
+        }
         [HttpDelete("{id}")]
         public IActionResult TestimonialDelete(int id)
         {

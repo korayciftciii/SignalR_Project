@@ -35,6 +35,22 @@ namespace WebAPI.Controllers
             }
             return Ok(values);
         }
+        [HttpGet("FoodCount")]
+        public IActionResult FoodCount()
+        {
+            var count = _foodService.TGetFoodCount();
+            return Ok(new { Count = count });
+        }[HttpGet("ActiveFoodCount")]
+        public IActionResult ActiveFoodCount()
+        {
+            var count = _foodService.TGetActiveFoodCount();
+            return Ok(new { Count = count });
+        }[HttpGet("InActiveFoodCount")]
+        public IActionResult InActiveFoodCount()
+        {
+            var count = _foodService.TGetInActiveFoodCount();
+            return Ok(new { Count = count });
+        }
         [HttpDelete("{id}")]
         public IActionResult FoodDelete(int id)
         {
