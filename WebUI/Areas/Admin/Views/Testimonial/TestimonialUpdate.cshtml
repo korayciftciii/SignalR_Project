@@ -1,0 +1,51 @@
+﻿@model UpdateTestimonialDto
+
+<h4 class="page-title">Update Comment</h4>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Update Form</div>
+    </div>
+    <form asp-action="TestimonialUpdate" method="post">
+        <div class="card-body">
+            <input type="hidden" asp-for="TestimonialId"/>
+            <div class="form-group">
+                <label asp-for="CustomerFullName">Customer Full Name</label>
+                <input asp-for="CustomerFullName" type="text" class="form-control input-pill" />
+                <span asp-validation-for="CustomerFullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" type="text" class="form-control input-pill" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Comment">Comment</label>
+                <textarea asp-for="Comment" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageUrl">Image Url</label>
+                <input asp-for="ImageUrl" type="text" class="form-control input-pill" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CommentStatus">Is Active</label>
+                <input asp-for="CommentStatus" type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-style="btn-round" />
+            </div>
+
+        </div>
+        <div class="card-action">
+            <button class="btn btn-success" type="submit">
+                <i class="la la-save"></i> Save
+            </button>
+            <a class="btn btn-danger" asp-action="Index" asp-controller="Testimonial" asp-area="Admin">
+                <i class="la la-close"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>

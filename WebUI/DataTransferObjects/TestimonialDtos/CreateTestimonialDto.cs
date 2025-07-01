@@ -1,0 +1,11 @@
+﻿namespace WebUI.DataTransferObjects.TestimonialDtos
+{
+    public class CreateTestimonialDto
+    {
+        public string CustomerFullName { get; set; } = null!;
+        public string? Title { get; set; }
+        public string? Comment { get; set; }
+        public string? ImageUrl { get; set; }
+        public bool CommentStatus { get; set; }
+    }
+}
