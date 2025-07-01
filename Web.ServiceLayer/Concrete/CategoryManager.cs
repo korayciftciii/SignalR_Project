@@ -23,6 +23,11 @@ namespace Web.ServiceLayer.Concrete
             _categoryDAL.Delete(entity);
                 }
 
+        public int TGetActiveCategoryCount()
+        {
+            return _categoryDAL.GetActiveCategoryCount();
+        }
+
         public List<Category> TGetAll()
         {
             var data = _categoryDAL.GetAll();
@@ -35,6 +40,17 @@ namespace Web.ServiceLayer.Concrete
             var datum=_categoryDAL.GetById(id);
        
             return datum;
+        }
+
+        public int TGetCategoryCount()
+        {
+            
+            return _categoryDAL.GetCategoryCount();
+        }
+
+        public int TGetInActiveCategoryCount()
+        {
+            return _categoryDAL.GetInactiveCategoryCount();
         }
 
         public void TInsert(Category entity)

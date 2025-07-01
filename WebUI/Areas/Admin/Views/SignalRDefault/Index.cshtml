@@ -16,6 +16,10 @@
             Connection Status:
             <strong id="connectionstatus"></strong>
         </div>
+        <div class="alert alert-primary">
+            Category Count:
+            <strong id="categorycount"></strong>
+        </div>
     </div>
 </div>
 
@@ -31,10 +35,19 @@
 
             $("#connectionstatus").text(connection.state);
 
+        
+
             connection.start().then(function () {
                 $("#connectionstatus").text(connection.state);
+                setInterval(()=>{
+                    connection.invoke("GetCategoryCount");
+                },5000);
             }).catch(function (err) {
                 console.error(err.toString());
+            });
+
+            connection.on("ReceiveCategoryCount",(categoryCount)=>{
+                $("#categorycount").text(categoryCount);
             });
         });
     </script>

@@ -25,6 +25,12 @@ namespace WebAPI.Controllers
             var values = _mapper.Map<List<ResultCategoryDto>>(_categoryService.TGetAll());
             return Ok(values);
         }
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+            var count = _categoryService.TGetCategoryCount();
+            return Ok(new { Count = count });
+        }
         [HttpGet("{id}")]
         public IActionResult CategoryGetById(int id)
         {
