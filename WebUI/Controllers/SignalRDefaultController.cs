@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace WebUI.Controllers
 {
-    [Area("Admin")]
-    public class HomeController : Controller
+    public class SignalRDefaultController : Controller
     {
         public IActionResult Index()
         {

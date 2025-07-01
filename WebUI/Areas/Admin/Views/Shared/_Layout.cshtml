@@ -16,5 +16,6 @@
         </div>
     </div>
     @await Component.InvokeAsync("AdminScripts")
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
