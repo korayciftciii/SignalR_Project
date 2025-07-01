@@ -1,0 +1,46 @@
+﻿@model List<ResultOpeningHourDto>
+<h4 class="page-title">Day of Weeks</h4>
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Manage Opening Hours</div>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Day</th>
+					<th>Open Time</th>
+					<th>Close Time</th>
+					<th scope="col">Is OPEN</th>
+					<th scope="col">Update</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model)
+				{	
+					<tr>
+						<td>@item.OpeningHourId</td>
+					
+<td>@((DayOfWeek)item.DayOfWeek)</td>
+<td>@(item.OpenTime.HasValue ? DateTime.Today.Add(item.OpenTime.Value).ToString("hh:mm tt", CultureInfo.InvariantCulture) : "-")</td>
+<td>@(item.CloseTime.HasValue ? DateTime.Today.Add(item.CloseTime.Value).ToString("hh:mm tt", CultureInfo.InvariantCulture) : "-")</td>
+
+
+						<td>
+							@if (item.IsClosed)
+							{
+								<span class="badge badge-danger">Closed</span>
+							}
+							else
+							{
+								<span class="badge badge-success">Open</span>
+							}
+						</td>
+						<td><a asp-area="Admin" asp-controller="OpeningHour" asp-action="OpeningHourUpdate" asp-route-dayId="@item.OpeningHourId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

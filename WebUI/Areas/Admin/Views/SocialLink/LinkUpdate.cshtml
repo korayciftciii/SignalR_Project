@@ -1,0 +1,41 @@
+﻿@model UpdateSocialLinkDto
+<h4 class="page-title">UpdateSocial Account</h4>
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">UpdateForm</div>
+	</div>
+	<form asp-action="LinkAdd" method="post">
+		<div class="card-body">
+			<input type="hidden" asp-for="SocialLinkId" />
+			<div class="form-group">
+				<label asp-for="PlatformName">Platform Name</label>
+				<input asp-for="PlatformName" type="text" class="form-control input-pill">
+			</div>
+			<div class="form-group">
+				<label asp-for="Url">Account Url</label>
+				<input asp-for="Url" type="text" class="form-control input-pill">
+			</div>
+
+			<div class="form-group">
+				<label asp-for="IconClass">Icons</label>
+				<select class="form-control input-pill" asp-for="IconClass">
+					<option value="">Choose a Platform For Icon</option>
+					<option value="la la-facebook"><i class="la la-facebook"></i> Facebook</option>
+					<option value="la la-instagram"><i class="la la-instagram"></i>Instagram</option>
+					<option value="la la-linkedin"><i class="la la-linkedin"></i> Linkedin</option>
+					<option value="la la-reddit"><i class="la la-reddit"></i> Reddit</option>
+					<option value="la la-pinterest-square"><i class="la la-pinterest-square"></i> Pinterest</option>
+					<option value="la la-skype"><i class="la la-skype"></i> Skype</option>
+				</select>
+			</div>
+		</div>
+		<div class="card-action">
+			<button class="btn btn-success" type="submit">
+				<i class="
+la la-save"></i> Save
+			</button>
+			<a class="btn btn-danger" asp-action="Index" asp-controller="SocialLink" asp-area="Admin"><i class="la la-close"></i> Cancel</a>
+		</div>
+	</form>
+</div>

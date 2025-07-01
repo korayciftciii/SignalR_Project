@@ -1,0 +1,50 @@
+﻿@model List<ResultFoodDto>
+<h4 class="page-title">Foods</h4>
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">All Foods</div>
+		<a class="btn btn-info" asp-action="FoodAdd" asp-controller="Food" asp-area="Admin"><i class="la la-plus"></i> Add New Food</a>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Image</th>
+					<th scope="col">Food Name</th>
+					<th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category Id</th>
+					<th scope="col">Is Active</th>
+					<th scope="col">Update</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model)
+				{	
+					<tr>
+						<td>@item.FoodId</td>
+						<td><img width="25" height="25"  src="@item.ImageUrl" alt="@item.FoodName"/></td>
+						<td>@item.FoodName</td>
+						<td>@item.Description</td>
+						<td>@item.Price $</td>
+						<td>@item.CategoryId</td>
+						<td>
+							@if (item.FoodStatus)
+							{
+								<span class="badge badge-success">Active</span>
+							}
+							else
+							{
+								<span class="badge badge-danger">Passive</span>
+							}
+						</td>
+						<td><a asp-area="Admin" asp-controller="Food" asp-action="FoodUpdate" asp-route-foodId="@item.FoodId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
+						<td><a asp-area="Admin" asp-controller="Food" asp-action="FoodDelete" asp-route-foodId="@item.FoodId" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

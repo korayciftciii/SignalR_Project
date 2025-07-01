@@ -1,0 +1,24 @@
+﻿@model CreateCategoryDto
+<h4 class="page-title">Add New Category</h4>
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Insertion Form</div>
+	</div>
+	<form asp-action="CategoryAdd" method="post">
+	<div class="card-body">
+		<div class="form-group">
+			<label asp-for="CategoryName">Category Name</label>
+			<input asp-for="CategoryName" type="text" class="form-control input-pill">
+		</div>
+			<div class="form-group">
+				<label asp-for="CategoryStatus">Is Active</label>
+				<input asp-for="CategoryStatus" type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-style="btn-round">
+			</div>
+	</div>
+	<div class="card-action">
+		<button class="btn btn-success" type="submit">Submit</button>
+			<a class="btn btn-danger" asp-action="Index" asp-controller="Category" asp-area="Admin"><i class="la la-close"></i> Cancel</a>
+	</div>
+	</form>
+</div>

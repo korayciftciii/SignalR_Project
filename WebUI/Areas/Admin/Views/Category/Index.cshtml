@@ -1,0 +1,42 @@
+﻿@model List<ResultCategoryDto>
+<h4 class="page-title">Categories</h4>
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">All Categories</div>
+		<a class="btn btn-info" asp-action="CategoryAdd" asp-controller="Category" asp-area="Admin"><i class="la la-plus"></i> Add New Category</a>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Category Name</th>
+					<th scope="col">Is Active</th>
+					<th scope="col">Update</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model)
+				{	
+					<tr>
+						<td>@item.CategoryId</td>
+						<td>@item.CategoryName</td>
+						<td>
+							@if (item.CategoryStatus)
+							{
+								<span class="badge badge-success">Active</span>
+							}
+							else
+							{
+								<span class="badge badge-danger">Passive</span>
+							}
+						</td>
+						<td><a asp-area="Admin" asp-controller="Category" asp-action="CategoryUpdate" asp-route-categoryId="@item.CategoryId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
+						<td><a asp-area="Admin" asp-controller="Category" asp-action="CategoryDelete" asp-route-categoryId="@item.CategoryId" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

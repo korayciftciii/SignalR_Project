@@ -1,0 +1,38 @@
+﻿
+@model UpdateFooterContentDto
+<h4 class="page-title">Footer Section</h4>
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Edit Form</div>
+	</div>
+	<form asp-action="Index" method="post">
+		<div class="card-body">
+			<input asp-for="FooterContentId" type="hidden" />
+			<div class="form-group">
+				<label asp-for="FooterTitle">Title</label>
+				<input asp-for="FooterTitle" type="text" class="form-control input-pill">
+			</div>
+			<div class="form-group">
+				<label asp-for="FooterDescription">Description</label>
+				<textarea class="form-control" asp-for="FooterDescription" rows="5"></textarea>
+			</div>
+			<div class="form-group">
+				<label asp-for="StoreMail">Restaurant Email</label>
+				<input asp-for="StoreMail" type="text" class="form-control input-pill">
+			</div><div class="form-group">
+				<label asp-for="StoreNumber">Restaurant Phone Number</label>
+				<input asp-for="StoreNumber" type="text" class="form-control input-pill">
+			</div><div class="form-group">
+				<label asp-for="LocationLabel">Location Title</label>
+				<input asp-for="LocationLabel" type="text" class="form-control input-pill">
+			</div><div class="form-group">
+				<label asp-for="LocationUrl">Google Maps Store Url</label>
+				<input asp-for="LocationUrl" type="text" class="form-control input-pill">
+			</div>
+		</div>
+		<div class="card-action">
+			<button class="btn btn-success" type="submit"><i class="la la-save"></i> Save</button>
+		</div>
+	</form>
+</div>

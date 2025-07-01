@@ -1,0 +1,51 @@
+﻿@model UpdateDiscountDto
+<h4 class="page-title">Update Discount</h4>
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Update Form</div>
+	</div>
+	<form asp-action="DiscountUpdate" method="post">
+		<div class="card-body">
+			<input type="hidden" asp-for="DiscountId"/>
+			<div class="form-group">
+				<label asp-for="DiscountTitle">Discount Title</label>
+				<input asp-for="DiscountTitle" type="text" class="form-control input-pill">
+			</div>
+			<div class="form-group">
+				<label asp-for="Description">Description</label>
+				<textarea class="form-control" asp-for="Description" rows="5"></textarea>
+			</div>
+			<div class="form-group">
+				<label asp-for="PercentageOfDiscount">Percentage of Discount</label>
+				<input asp-for="PercentageOfDiscount" type="range" class="form-range" min="0" max="100" step="1" oninput="document.getElementById('discountVal').innerText = this.value + '%'">
+				<small id="discountVal" class="form-text text-muted">50%</small>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="ImageUrl">Image Url</label>
+				<input asp-for="ImageUrl" type="text" class="form-control input-pill">
+			</div>
+			<div class="form-group">
+				<label asp-for="StartDate" class="form-label">Start Date</label>
+				<input type="datetime-local" class="form-control" asp-for="StartDate" name="startDate"
+					   value="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm")">
+			</div>
+
+			<div class="form-group">
+				<label asp-for="EndDate" class="form-label">End Date</label>
+				<input type="datetime-local" class="form-control" asp-for="EndDate" name="endDate"
+					   value="@DateTime.UtcNow.AddDays(30).ToString("yyyy-MM-ddTHH:mm")">
+			</div>
+
+			<div class="form-group">
+				<label asp-for="DiscountStatus">Is Active</label>
+				<input asp-for="DiscountStatus" type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-style="btn-round">
+			</div>
+		</div>
+		<div class="card-action">
+			<button class="btn btn-success" type="submit"><i class="la la-check-circle"></i> Update</button>
+			<a class="btn btn-danger" asp-action="Index" asp-controller="Discount" asp-area="Admin"><i class="la la-close"></i> Cancel</a>
+		</div>
+	</form>
+</div>

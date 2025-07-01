@@ -1,0 +1,44 @@
+﻿@model UpdateOpeningHourDto
+
+<h4 class="page-title">Update Opening Hours</h4>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Update Form</div>
+    </div>
+    <form asp-action="OpeningHourUpdate" method="post">
+        <input type="hidden" asp-for="OpeningHourId" />
+
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="DayOfWeek">Day Of Week</label>
+                <input asp-for="DayOfWeek" type="text" disabled class="form-control input-pill" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IsClosed">Is Closed</label>
+                <input asp-for="IsClosed" id="IsClosedCheckbox" type="checkbox" data-toggle="toggle" data-onstyle="success" data-style="btn-round" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OpenTime">Open Time</label>
+                <input asp-for="OpenTime" id="OpenTimeInput" type="time" class="form-control input-pill" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CloseTime">Close Time</label>
+                <input asp-for="CloseTime" id="CloseTimeInput" type="time" class="form-control input-pill" />
+            </div>
+        </div>
+
+        <div class="card-action">
+            <button class="btn btn-success" type="submit">
+                <i class="la la-save"></i> Save
+            </button>
+            <a class="btn btn-danger" asp-action="Index" asp-controller="OpeningHour" asp-area="Admin">
+                <i class="la la-close"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
