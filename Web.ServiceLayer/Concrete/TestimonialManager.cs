@@ -23,6 +23,11 @@ namespace Web.ServiceLayer.Concrete
            _testimonialDAL.Delete(entity);
         }
 
+        public int TGetActiveTestimonialCount()
+        {
+            return _testimonialDAL.GetActiveTestimonialCount();
+        }
+
         public List<Testimonial> TGetAll()
         {
             var data = _testimonialDAL.GetAll();
@@ -35,6 +40,16 @@ namespace Web.ServiceLayer.Concrete
            var datum = _testimonialDAL.GetById(id);
        
             return datum;
+        }
+
+        public int TGetInActiveTestimonialCount()
+        {
+            return _testimonialDAL.GetInactiveTestimonialCount();
+        }
+
+        public int TGetTestimonialCount()
+        {
+            return _testimonialDAL.GetTestimonialCount();
         }
 
         public void TInsert(Testimonial entity)

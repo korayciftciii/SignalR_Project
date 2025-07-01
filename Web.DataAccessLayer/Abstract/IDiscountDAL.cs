@@ -9,5 +9,9 @@ namespace Web.DataAccessLayer.Abstract
 {
    public interface IDiscountDAL :IGenericDAL<Discount>
     {
+        public int GetDiscountCount();
+        public int GetActiveDiscountCount();
+        public int GetInactiveDiscountCount();
     }
+
 }

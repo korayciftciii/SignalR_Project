@@ -9,5 +9,8 @@ namespace Web.DataAccessLayer.Abstract
 {
    public interface ISliderDAL :IGenericDAL<Slider>
     {
+        public int GetSliderCount();
+        public int GetActiveSliderCount();
+        public int GetInactiveSliderCount();
     }
 }

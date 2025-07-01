@@ -10,6 +10,9 @@ namespace Web.DataAccessLayer.Abstract
    public interface IFoodDAL :IGenericDAL<Food>
     {
         List<Food> FoodGetWithCategory();
+        public int GetFoodCount();
+        public int GetActiveFoodCount();
+        public int GetInactiveFoodCount();
 
     }
 }

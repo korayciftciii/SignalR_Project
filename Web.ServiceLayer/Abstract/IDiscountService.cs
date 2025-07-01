@@ -9,5 +9,8 @@ namespace Web.ServiceLayer.Abstract
 {
    public interface IDiscountService : IGenericService<Discount>
     {
+        public int TGetDiscountCount();
+        public int TGetActiveDiscountCount();
+        public int TGetInActiveDiscountCount();
     }
 }

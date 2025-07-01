@@ -9,5 +9,8 @@ namespace Web.ServiceLayer.Abstract
 {
   public  interface ISliderService : IGenericService<Slider>
     {
+        public int TGetSliderCount();
+        public int TGetActiveSliderCount();
+        public int TGetInActiveSliderCount();
     }
 }

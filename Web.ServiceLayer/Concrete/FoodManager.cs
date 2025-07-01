@@ -29,6 +29,11 @@ namespace Web.ServiceLayer.Concrete
             return data;
         }
 
+        public int TGetActiveFoodCount()
+        {
+            return _foodDAL.GetActiveFoodCount();
+        }
+
         public List<Food> TGetAll()
         {
             var data = _foodDAL.GetAll();
@@ -41,6 +46,16 @@ namespace Web.ServiceLayer.Concrete
            var datum=_foodDAL.GetById(id);
       
             return datum;
+        }
+
+        public int TGetFoodCount()
+        {
+            return _foodDAL.GetFoodCount();
+        }
+
+        public int TGetInActiveFoodCount()
+        {
+            return _foodDAL.GetInactiveFoodCount();
         }
 
         public void TInsert(Food entity)

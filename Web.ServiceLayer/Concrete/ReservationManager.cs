@@ -23,6 +23,11 @@ namespace Web.ServiceLayer.Concrete
           _reservationDAL.Delete(entity);
         }
 
+        public int TGetActiveReservationCount()
+        {
+            return _reservationDAL.GetActiveReservationCount();
+        }
+
         public List<Reservation> TGetAll()
         {
            var data = _reservationDAL.GetAll();
@@ -35,6 +40,16 @@ namespace Web.ServiceLayer.Concrete
           var datum = _reservationDAL.GetById(id);
           
             return datum;
+        }
+
+        public int TGetInActiveReservationCount()
+        {
+            return _reservationDAL.GetInactiveReservationCount();
+        }
+
+        public int TGetReservationCount()
+        {
+            return _reservationDAL.GetReservationCount();
         }
 
         public void TInsert(Reservation entity)

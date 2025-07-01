@@ -9,5 +9,8 @@ namespace Web.DataAccessLayer.Abstract
 {
  public  interface IReservationDAL :IGenericDAL<Reservation>
     {
+        public int GetReservationCount();
+        public int GetActiveReservationCount();
+        public int GetInactiveReservationCount();
     }
 }

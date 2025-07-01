@@ -10,5 +10,8 @@ namespace Web.ServiceLayer.Abstract
    public interface IFoodService : IGenericService<Food>
     {
         List<Food> TFoodGetWithCategory();
+        public int TGetFoodCount();
+        public int TGetActiveFoodCount();
+        public int TGetInActiveFoodCount();
     }
 }

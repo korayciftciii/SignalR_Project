@@ -8,6 +8,7 @@ namespace Web.DataAccessLayer.EntityFramework
 {
     public class EFFoodDAL : GenericRepository<Food>, IFoodDAL
     {
+       
         public EFFoodDAL(ApplicationContext context) : base(context)
         {
         }
@@ -17,6 +18,28 @@ namespace Web.DataAccessLayer.EntityFramework
             var context = new ApplicationContext();
             var values = context.Foods.Include(x => x.Category).ToList();
             return values;
+        }
+
+        public int GetActiveFoodCount()
+        {
+           var context = new ApplicationContext();
+            var count = context.Foods.Count(x => x.FoodStatus);
+            return count;
+        }
+
+        public int GetFoodCount()
+        {
+            var context = new ApplicationContext();
+            var count = context.Foods.Count();
+            return count;
+        }
+
+        public int GetInactiveFoodCount()
+        {
+            var context = new ApplicationContext();
+
+            var count = context.Foods.Count(x => !x.FoodStatus);
+            return count;
         }
     }
 }

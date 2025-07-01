@@ -15,5 +15,23 @@ namespace Web.DataAccessLayer.EntityFramework
         public EFDiscountDAL(ApplicationContext context) : base(context)
         {
         }
+
+        public int GetActiveDiscountCount()
+        {
+            var context=new ApplicationContext();
+            return context.Discounts.Count(d => d.DiscountStatus && d.StartDate <= DateTime.UtcNow && d.EndDate >= DateTime.UtcNow);
+        }
+
+        public int GetDiscountCount()
+        {
+            var context = new ApplicationContext();
+            return context.Discounts.Count();
+        }
+
+        public int GetInactiveDiscountCount()
+        {
+            var context = new ApplicationContext();
+            return context.Discounts.Count(d => !d.DiscountStatus || d.EndDate < DateTime.UtcNow);
+        }
     }
 }

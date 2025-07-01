@@ -7,10 +7,10 @@ using Web.EntityLayer.Entities;
 
 namespace Web.DataAccessLayer.Abstract
 {
-  public interface ICategoryDAL :IGenericDAL<Category>
+    public interface ICategoryDAL : IGenericDAL<Category>
     {
         public int GetCategoryCount();
         public int GetActiveCategoryCount();
         public int GetInactiveCategoryCount();
-        
+    }
 }

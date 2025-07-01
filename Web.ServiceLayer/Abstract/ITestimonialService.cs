@@ -9,5 +9,8 @@ namespace Web.ServiceLayer.Abstract
 {
   public  interface ITestimonialService : IGenericService<Testimonial>
     {
+        public int TGetTestimonialCount();
+        public int TGetActiveTestimonialCount();
+        public int TGetInActiveTestimonialCount();
     }
 }

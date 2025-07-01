@@ -23,6 +23,11 @@ namespace Web.ServiceLayer.Concrete
            _sliderDAL.Delete(entity);
         }
 
+        public int TGetActiveSliderCount()
+        {
+            return _sliderDAL.GetActiveSliderCount();
+        }
+
         public List<Slider> TGetAll()
         {
             var data = _sliderDAL.GetAll();
@@ -35,6 +40,16 @@ namespace Web.ServiceLayer.Concrete
            var datum = _sliderDAL.GetById(id);
           
             return datum;   
+        }
+
+        public int TGetInActiveSliderCount()
+        {
+            return _sliderDAL.GetInactiveSliderCount();
+        }
+
+        public int TGetSliderCount()
+        {
+            return _sliderDAL.GetSliderCount();
         }
 
         public void TInsert(Slider entity)

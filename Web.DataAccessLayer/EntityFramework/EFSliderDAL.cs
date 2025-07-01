@@ -15,5 +15,23 @@ namespace Web.DataAccessLayer.EntityFramework
         public EFSliderDAL(ApplicationContext context) : base(context)
         {
         }
+
+        public int GetActiveSliderCount()
+        {
+            var context = new ApplicationContext();
+            return context.Sliders.Count(s => s.FeatureStatus);
+        }
+
+        public int GetInactiveSliderCount()
+        {
+            var context = new ApplicationContext();
+            return context.Sliders.Count(s => !s.FeatureStatus);
+        }
+
+        public int GetSliderCount()
+        {
+            var context = new ApplicationContext();
+            return context.Sliders.Count();
+        }
     }
 }

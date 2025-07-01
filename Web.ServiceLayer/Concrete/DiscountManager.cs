@@ -23,6 +23,11 @@ namespace Web.ServiceLayer.Concrete
            _discountDAL.Delete(entity);
         }
 
+        public int TGetActiveDiscountCount()
+        {
+           return _discountDAL.GetActiveDiscountCount();
+        }
+
         public List<Discount> TGetAll()
         {
            var data=_discountDAL.GetAll();
@@ -35,6 +40,16 @@ namespace Web.ServiceLayer.Concrete
            var datum=_discountDAL.GetById(id);
        
             return datum;   
+        }
+
+        public int TGetDiscountCount()
+        {
+            return _discountDAL.GetDiscountCount();
+        }
+
+        public int TGetInActiveDiscountCount()
+        {
+            return _discountDAL.GetInactiveDiscountCount();
         }
 
         public void TInsert(Discount entity)
