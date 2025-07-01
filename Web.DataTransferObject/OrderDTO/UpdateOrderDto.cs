@@ -9,7 +9,7 @@ namespace Web.DataTransferObject.OrderDTO
 {
  public   class UpdateOrderDto
     {
-        public int OrderID { get; set; }
+        public int OrderId { get; set; }
         public string TableNumber { get; set; }
         public string Description { get; set; }
         public List<UpdateOrderDetailDto> OrderDetails { get; set; }

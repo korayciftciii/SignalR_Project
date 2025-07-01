@@ -8,7 +8,7 @@ namespace Web.EntityLayer.Entities
 {
   public  class OrderDetail
     {
-        public int OrderDetailID { get; set; }
+        public int OrderDetailId { get; set; }
         public int ProductID { get; set; }
         public Food Food { get; set; }
         public int Count { get; set; }

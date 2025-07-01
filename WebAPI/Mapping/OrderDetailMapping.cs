@@ -14,6 +14,6 @@ namespace WebAPI.Mapping
             CreateMap<OrderDetail, GetOrderDetailByIdDto>().ReverseMap();
         }
     }
-    {
-    }
+    
+    
 }

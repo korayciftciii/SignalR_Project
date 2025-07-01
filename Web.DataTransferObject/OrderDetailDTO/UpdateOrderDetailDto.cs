@@ -8,7 +8,7 @@ namespace Web.DataTransferObject.OrderDetailDTO
 {
 public    class UpdateOrderDetailDto
     {
-        public int OrderDetailID { get; set; }
+        public int OrderDetailId { get; set; }
         public int ProductID { get; set; }
         public int Count { get; set; }
         public decimal UnitPrice { get; set; }

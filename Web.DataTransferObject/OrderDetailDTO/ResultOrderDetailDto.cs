@@ -8,7 +8,7 @@ namespace Web.DataTransferObject.OrderDetailDTO
 {
   public  class ResultOrderDetailDto
     {
-        public int OrderDetailID { get; set; }
+        public int OrderDetailId { get; set; }
         public int ProductID { get; set; }
         public string ProductName { get; set; } // Food.Name
         public int Count { get; set; }

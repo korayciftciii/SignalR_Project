@@ -9,13 +9,14 @@ namespace Web.EntityLayer.Entities
 {
   public  class Order
     {
-        public int OrderID { get; set; }
+        public int OrderId { get; set; }
         public string TableNumber { get; set; }
         public string Description { get; set; }
 
         [Column(TypeName = "Date")]
         public DateTime OrderDate { get; set; }
         public decimal TotalPrice { get; set; }
+        public bool IsCompleted { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
     }
 }
