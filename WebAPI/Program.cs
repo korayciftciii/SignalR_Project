@@ -56,6 +56,9 @@ builder.Services.AddScoped<IOrderDAL, EFOrderDAL>();
 builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
 builder.Services.AddScoped<IOrderDetailDAL, EFOrderDetailDAL>();
 
+builder.Services.AddScoped<IMoneyCaseDAL, EFMoneyCaseDAL>();
+builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
+
 // Add services to the container.
 
 builder.Services.AddControllers();

@@ -43,6 +43,12 @@ namespace Web.ServiceLayer.Concrete
             return datum;
         }
 
+        public decimal TGetDailyIncome()
+        {
+            var dailyIncome = _orderDAL.GetDailyIncome();
+            return dailyIncome;
+        }
+
         public int TGetInActiveOrderCount()
         {
             return _orderDAL.GetInactiveOrderCount();

@@ -12,5 +12,6 @@ namespace Web.ServiceLayer.Abstract
         public int TGetOrderCount();
         public int TGetActiveOrderCount();
         public int TGetInActiveOrderCount();
+        public decimal TGetDailyIncome();
     }
 }

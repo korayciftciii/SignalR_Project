@@ -12,5 +12,6 @@ namespace Web.DataAccessLayer.Abstract
         public int GetOrderCount();
         public int GetActiveOrderCount();
         public int GetInactiveOrderCount();
+        public decimal GetDailyIncome();
     }
 }

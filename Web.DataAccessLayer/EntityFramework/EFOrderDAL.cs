@@ -21,6 +21,17 @@ namespace Web.DataAccessLayer.EntityFramework
             return context.Orders.Count(o => o.IsCompleted == false);
         }
 
+        public decimal GetDailyIncome()
+        {
+            using var context = new ApplicationContext();
+
+            var today = DateTime.Today;
+
+            return context.Orders
+                .Where(o => o.IsCompleted == true && o.OrderDate == today)
+                .Sum(o => o.TotalPrice);
+        }
+
         public int GetInactiveOrderCount()
         {
             using var context = new ApplicationContext();

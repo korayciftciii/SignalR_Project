@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web.DataTransferObject.OrderDTO;
 using Web.EntityLayer.Entities;
@@ -42,6 +41,12 @@ namespace WebAPI.Controllers
         {
             var count = _orderService.TGetInActiveOrderCount();
             return Ok(new { Count = count });
+        }
+        [HttpGet("DailyIncome")]
+        public IActionResult DailyIncome()
+        {
+            var income = _orderService.TGetDailyIncome();
+            return Ok(new { Income = income });
         }
         [HttpGet("{id}")]
         public IActionResult OrderGetById(int id)
