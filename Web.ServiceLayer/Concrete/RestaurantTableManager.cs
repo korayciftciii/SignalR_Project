@@ -18,6 +18,24 @@ namespace Web.ServiceLayer.Concrete
             _restaurantTableDAL = restaurantTableDAL;
         }
 
+        public int GetAvaliableTableCount()
+        {
+            var count=_restaurantTableDAL.GetAvaliableTableCount();
+            return count;
+        }
+
+        public int GetOccupiedTableCount()
+        {
+            var count = _restaurantTableDAL.GetOccupiedTableCount();
+            return count;
+        }
+
+        public int GetTableCount()
+        {
+            var count=_restaurantTableDAL.GetTableCount();
+            return count;
+        }
+
         public void TDelete(RestaurantTable entity)
         {
            _restaurantTableDAL.Delete(entity);

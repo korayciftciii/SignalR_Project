@@ -34,6 +34,24 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
+        [HttpGet("GetTableCount")]
+        public IActionResult GetTableCount()
+        {
+            var count = _restaurantTableService.GetTableCount();
+            return Ok(new { Count = count });
+        }
+        [HttpGet("GetAvailableTableCount")]
+        public IActionResult GetAvaliableTableCount()
+        {
+            var count = _restaurantTableService.GetAvaliableTableCount();
+            return Ok(new { Count = count });
+        }
+        [HttpGet("GetOccupiedTableCount")]
+        public IActionResult GetOccupiedTableCount()
+        {
+            var count = _restaurantTableService.GetOccupiedTableCount();
+            return Ok(new { Count = count });
+        }
         [HttpPost]
         public IActionResult RestaurantTableAdd(CreateRestaurantTableDto createRestaurantTableDto)
         {

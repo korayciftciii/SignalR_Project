@@ -9,5 +9,8 @@ namespace Web.ServiceLayer.Abstract
 {
   public  interface IRestaurantTableService :IGenericService<RestaurantTable>
     {
+        public int GetTableCount();
+        public int GetAvaliableTableCount();
+        public int GetOccupiedTableCount();
     }
 }

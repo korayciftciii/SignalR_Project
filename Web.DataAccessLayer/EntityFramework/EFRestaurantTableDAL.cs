@@ -15,5 +15,25 @@ namespace Web.DataAccessLayer.EntityFramework
         public EFRestaurantTableDAL(ApplicationContext context) : base(context)
         {
         }
+
+        public int GetAvaliableTableCount()
+        {
+            using var context=new ApplicationContext();
+            return context.RestaurantTables.Count(t=> t.IsAvailable==true);
+        }
+
+        public int GetOccupiedTableCount()
+        {
+            using var context = new ApplicationContext();
+            var count=context.RestaurantTables.Count(t => t.IsAvailable == false);
+            return count;
+        }
+
+        public int GetTableCount()
+        {
+           using var context=new ApplicationContext();
+            var count =context.RestaurantTables.Count();
+            return count;
+        }
     }
 }

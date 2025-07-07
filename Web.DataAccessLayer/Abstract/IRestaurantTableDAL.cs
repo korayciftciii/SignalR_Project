@@ -9,6 +9,8 @@ namespace Web.DataAccessLayer.Abstract
 {
   public  interface IRestaurantTableDAL : IGenericDAL<RestaurantTable>
     {
-
+        public int GetTableCount();
+        public int GetAvaliableTableCount();
+        public int GetOccupiedTableCount();
     }
 }
