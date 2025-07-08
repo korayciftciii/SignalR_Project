@@ -25,80 +25,41 @@ namespace WebAPI.Hubs
             _restaurantTableService = restaurantTableService;
         }
 
-        public async Task GetCategoryCounts()
+        public async Task GetAllDashboardData()
         {
-           var total =_categoryService.TGetCategoryCount();
-            var active = _categoryService.TGetActiveCategoryCount();
-            var passive = _categoryService.TGetInActiveCategoryCount();
+            var dashboardData = new DashboardDataDto
+            {
+                CategoryCounts = new DataCountDto
+                {
+                    TotalCount = _categoryService.TGetCategoryCount(),
+                    ActiveCount = _categoryService.TGetActiveCategoryCount(),
+                    PassiveCount = _categoryService.TGetInActiveCategoryCount()
+                },
+                FoodCounts = new DataCountDto
+                {
+                    TotalCount = _foodService.TGetFoodCount(),
+                    ActiveCount = _foodService.TGetActiveFoodCount(),
+                    PassiveCount = _foodService.TGetInActiveFoodCount()
+                },
+                OrderCounts = new DataCountDto
+                {
+                    TotalCount = _orderService.TGetOrderCount(),
+                    ActiveCount = _orderService.TGetActiveOrderCount(),
+                    PassiveCount = _orderService.TGetInActiveOrderCount()
+                },
+                ReservationCounts = new DataCountDto
+                {
+                    TotalCount = _reservationService.TGetReservationCount(),
+                    ActiveCount = _reservationService.TGetActiveReservationCount(),
+                    PassiveCount = _reservationService.TGetInActiveReservationCount()
+                },
+                DailyRevenue = _orderService.TGetDailyIncome(),
+                TestimonialCount = _testimonialService.TGetTestimonialCount(),
+                TotalCaseAmount = _moneyCaseService.TGetTotalCaseAmount(),
+                AvaliableTableCount = _restaurantTableService.GetAvaliableTableCount()
+            };
 
-            var categoryCounts = new DataCountDto
-            {
-                TotalCount = total,
-                ActiveCount = active,
-                PassiveCount = passive
-            };
-            await Clients.All.SendAsync("ReceiveCategoryCounts", categoryCounts);
-        }
-        public async Task GetFoodCounts()
-        {
-            var total = _foodService.TGetFoodCount();
-            var active = _foodService.TGetActiveFoodCount();
-            var passive = _foodService.TGetInActiveFoodCount();
-
-            var foodCounts = new DataCountDto
-            {
-                TotalCount = total,
-                ActiveCount = active,
-                PassiveCount = passive
-            };
-
-            await Clients.All.SendAsync("ReceiveFoodCounts", foodCounts);
-        }
-        public async Task GetOrderCounts()
-        {
-            var total = _orderService.TGetOrderCount();
-            var active = _orderService.TGetActiveOrderCount();
-            var passive = _orderService.TGetInActiveOrderCount();
-            var orderCounts = new DataCountDto
-            {
-                TotalCount = total,
-                ActiveCount = active,
-                PassiveCount = passive
-            };
-            await Clients.All.SendAsync("ReceiveOrderCounts", orderCounts);
-        }
-        public async Task GetReservationCounts()
-        {
-            var total=_reservationService.TGetReservationCount();
-            var active = _reservationService.TGetActiveReservationCount();
-            var passive = _reservationService.TGetInActiveReservationCount();
-            var reservationCounts = new DataCountDto
-            {
-                TotalCount = total,
-                ActiveCount = active,
-                PassiveCount = passive
-            };
-             await Clients.All.SendAsync("ReceiveReservationCounts", reservationCounts);
-        }
-        public async Task GetDailyRevenue()
-        {
-            var dailyRevenue = _orderService.TGetDailyIncome();
-            await Clients.All.SendAsync("ReceiveDailyRevenue", dailyRevenue);
-        }
-        public async Task GetTestimonialCount()
-        {
-            var testimonialCount = _testimonialService.TGetTestimonialCount();
-            await Clients.All.SendAsync("ReceiveTestimonialCount", testimonialCount);
-        }
-        public async Task GetTotalCaseAmount()
-        {
-            var totalCaseAmount = _moneyCaseService.TGetTotalCaseAmount();
-            await Clients.All.SendAsync("ReceiveTotalCaseAmount", totalCaseAmount);
-        }
-        public async Task GetAvaliableTableCount()
-        {
-            var avaliableTableCount = _restaurantTableService.GetAvaliableTableCount();
-            await Clients.All.SendAsync("ReceiveAvaliableTableCount", avaliableTableCount);
+            await Clients.All.SendAsync("ReceiveAllDashboardData", dashboardData);
         }
 
     }

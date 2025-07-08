@@ -176,61 +176,42 @@ la la-table text-danger"></i>
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
-		$(function () {
+				$(function () {
 			var connection = new signalR.HubConnectionBuilder()
 				.withUrl("https://localhost:7295/SignalRHub")
 				.build();
 
 			connection.start().then(function () {
 				setInterval(() => {
-					connection.invoke("GetCategoryCounts");
-					connection.invoke("GetFoodCounts");
-					connection.invoke("GetOrderCounts");
-					connection.invoke("GetDailyRevenue");
-					connection.invoke("GetReservationCounts");
-					connection.invoke("GetTestimonialCount");
-				    connection.invoke("GetTotalCaseAmount");
-				    connection.invoke("GetAvaliableTableCount");
+					connection.invoke("GetAllDashboardData");
 				}, 1000);
 			}).catch(function (err) {
 				console.error(err.toString());
 			});
 
-			connection.on("ReceiveCategoryCounts", (categoryCounts) => {
-				$("#categorycount").text(categoryCounts.totalCount);
-				$("#activecategorycount").text(categoryCounts.activeCount);
-				$("#passivecategorycount").text(categoryCounts.passiveCount);
+			connection.on("ReceiveAllDashboardData", (data) => {
+				$("#categorycount").text(data.categoryCounts.totalCount);
+				$("#activecategorycount").text(data.categoryCounts.activeCount);
+				$("#passivecategorycount").text(data.categoryCounts.passiveCount);
+
+				$("#foodcount").text(data.foodCounts.totalCount);
+				$("#activefoodcount").text(data.foodCounts.activeCount);
+				$("#passivefoodcount").text(data.foodCounts.passiveCount);
+
+				$("#ordercount").text(data.orderCounts.totalCount);
+				$("#activeordercount").text(data.orderCounts.activeCount);
+				$("#passiveordercount").text(data.orderCounts.passiveCount);
+
+				$("#bookingcount").text(data.reservationCounts.totalCount);
+				$("#activebookingcount").text(data.reservationCounts.activeCount);
+				$("#passivebookingcount").text(data.reservationCounts.passiveCount);
+
+				$("#dailyrevenue").text(`$${Number(data.dailyRevenue).toFixed(2)}`);
+				$("#testimonialcount").text(data.testimonialCount);
+				$("#totalrevenue").text(`$${Number(data.totalCaseAmount).toFixed(2)}`);
+				$("#avaliabletables").text(data.avaliableTableCount);
 			});
-			connection.on("ReceiveFoodCounts", (foodCounts) => {
-			    $("#foodcount").text(foodCounts.totalCount);
-			    $("#activefoodcount").text(foodCounts.activeCount);
-			    $("#passivefoodcount").text(foodCounts.passiveCount);
-		    });
-		    connection.on("ReceiveOrderCounts", (orderCounts) => {
-			    $("#ordercount").text(orderCounts.totalCount);
-			    $("#activeordercount").text(orderCounts.activeCount);
-			    $("#passiveordercount").text(orderCounts.passiveCount);
-		    });
-			connection.on("ReceiveReservationCounts", (reservationCounts) => {
-			    $("#bookingcount").text(reservationCounts.totalCount);
-		     	$("#activebookingcount").text(reservationCounts.activeCount);
-			    $("#passivebookingcount").text(reservationCounts.passiveCount);
-		    });
-		    connection.on("ReceiveDailyRevenue", (dailyRevenue) => {
-			    const formatted = Number(dailyRevenue).toFixed(2);
-			    $("#dailyrevenue").text(`$${formatted}`);
-		    });
-		    connection.on("ReceiveTestimonialCount", (testimonialCount) => {
-			    $("#testimonialcount").text(testimonialCount);
-		    });
-			connection.on("ReceiveTotalCaseAmount", (totalCaseAmount) => {
-				const formatted = Number(totalCaseAmount).toFixed(2);
-				$("#totalrevenue").text(`$${formatted}`);
-		    });
-			connection.on("ReceiveAvaliableTableCount", (avaliableTableCount) => {
-				$("#avaliabletables").text(avaliableTableCount);
-		    });
-        });
+		});
 
 	</script>
 }

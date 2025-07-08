@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Areas.Admin.Controllers
+namespace WebUI.Controllers
 {
-    [Area("Admin")]
-    public class SignalRDefaultController : Controller
+    public class BookingController : Controller
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "Booking";
             return View();
         }
     }
