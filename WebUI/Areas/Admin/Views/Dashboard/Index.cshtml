@@ -1,62 +1,72 @@
 ﻿<h4 class="page-title">Dashboard</h4>
 <div class="row">
+	@*Category Count*@
 	<div class="col-md-3">
 		<div class="card card-stats card-warning">
 			<div class="card-body ">
 				<div class="row">
 					<div class="col-5">
 						<div class="icon-big text-center">
-							<i class="la la-users"></i>
+							<i class="la la-tags"></i>
 						</div>
 					</div>
 					<div class="col-7 d-flex align-items-center">
 						<div class="numbers">
-							<p class="card-category">Visitors</p>
-							<h4 class="card-title">1,294</h4>
+							<p class="card-category">Categories</p>
+							<h4 class="card-title" id="categorycount">*</h4>
+							<small class="text-white">Active: <span id="activecategorycount">*</span></small><br />
+							<small class="text-white">Passive: <span id="passivecategorycount">*</span></small>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	@*Food Count*@
 	<div class="col-md-3">
 		<div class="card card-stats card-success">
-			<div class="card-body ">
+			<div class="card-body">
 				<div class="row">
 					<div class="col-5">
 						<div class="icon-big text-center">
-							<i class="la la-bar-chart"></i>
+							<i class="la la-cubes"></i>
 						</div>
 					</div>
 					<div class="col-7 d-flex align-items-center">
 						<div class="numbers">
-							<p class="card-category">Sales</p>
-							<h4 class="card-title">$ 1,345</h4>
+							<p class="card-category">Foods</p>
+							<h4 class="card-title" id="foodcount">*</h4>
+							<small class="text-white">Active: <span id="activefoodcount">*</span></small><br />
+							<small class="text-white">Passive: <span id="passivefoodcount">*</span></small>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	@*Reservations Count*@
 	<div class="col-md-3">
 		<div class="card card-stats card-danger">
 			<div class="card-body">
 				<div class="row">
 					<div class="col-5">
 						<div class="icon-big text-center">
-							<i class="la la-newspaper-o"></i>
+							<i class="la la-calendar"></i>
 						</div>
 					</div>
 					<div class="col-7 d-flex align-items-center">
 						<div class="numbers">
-							<p class="card-category">Subscribers</p>
-							<h4 class="card-title">1303</h4>
+							<p class="card-category">Bookings</p>
+							<h4 class="card-title" id="bookingcount">*</h4>
+							<small class="text-white">Active: <span id="activebookingcount">*</span></small><br />
+							<small class="text-white">Passive: <span id="passivebookingcount">*</span></small>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	@*Order Count*@
 	<div class="col-md-3">
 		<div class="card card-stats card-primary">
 			<div class="card-body ">
@@ -68,35 +78,39 @@
 					</div>
 					<div class="col-7 d-flex align-items-center">
 						<div class="numbers">
-							<p class="card-category">Order</p>
-							<h4 class="card-title">576</h4>
+							<p class="card-category">Orders</p>
+							<h4 class="card-title" id="ordercount">*</h4>
+							<small class="text-white">Active: <span id="activeordercount">*</span></small><br />
+							<small class="text-white">Completed: <span id="passiveordercount">*</span></small>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	@*Total Revenue*@
 	<div class="col-md-3">
-									<div class="card card-stats">
-										<div class="card-body ">
-											<div class="row">
-												<div class="col-5">
-													<div class="icon-big text-center icon-warning">
-														<i class="la la-pie-chart text-warning"></i>
-													</div>
-												</div>
-												<div class="col-7 d-flex align-items-center">
-													<div class="numbers">
-														<p class="card-category">Number</p>
-														<h4 class="card-title">150GB</h4>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+		<div class="card card-stats">
+			<div class="card-body ">
+				<div class="row">
+					<div class="col-5">
+						<div class="icon-big text-center">
+							<i class="la la-diamond text-warning"></i>
+						</div>
+					</div>
+					<div class="col-7 d-flex align-items-center">
+						<div class="numbers">
+							<p class="card-category">Total Revenue</p>
+							<h4 class="card-title" id="totalrevenue">$0.00</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    @*Daily Income*@
 	<div class="col-md-3">
-									<div class="card card-stats">
+						<div class="card card-stats">
 										<div class="card-body ">
 											<div class="row">
 												<div class="col-5">
@@ -106,46 +120,49 @@
 												</div>
 												<div class="col-7 d-flex align-items-center">
 													<div class="numbers">
-														<p class="card-category">Revenue</p>
-														<h4 class="card-title">$ 1,345</h4>
+														<p class="card-category">Daily Revenue</p>
+							<h4 class="card-title" id="dailyrevenue">$0.00</h4>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+						</div>
 								</div>
+    @*Avaliable Tables*@
 	<div class="col-md-3">
 									<div class="card card-stats">
 										<div class="card-body">
 											<div class="row">
 												<div class="col-5">
 													<div class="icon-big text-center">
-														<i class="la la-times-circle-o text-danger"></i>
+							<i class="
+la la-table text-danger"></i>
 													</div>
 												</div>
 												<div class="col-7 d-flex align-items-center">
 													<div class="numbers">
-														<p class="card-category">Errors</p>
-														<h4 class="card-title">23</h4>
+														<p class="card-category">Avaliable Tables</p>
+														<h4 class="card-title" id="avaliabletables">*</h4>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+   @*Testimonial Count*@
 	<div class="col-md-3">
 									<div class="card card-stats">
 										<div class="card-body">
 											<div class="row">
 												<div class="col-5">
 													<div class="icon-big text-center">
-														<i class="la la-heart-o text-primary"></i>
+							<i class="la la-comments text-primary"></i>
 													</div>
 												</div>
 												<div class="col-7 d-flex align-items-center">
 													<div class="numbers">
-														<p class="card-category">Followers</p>
-														<h4 class="card-title">+45K</h4>
+														<p class="card-category">Testimonials</p>
+														<h4 class="card-title" id="testimonialcount">*</h4>
 													</div>
 												</div>
 											</div>
@@ -153,3 +170,67 @@
 									</div>
 								</div> 
 </div>
+
+@section Scripts {
+	<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		$(function () {
+			var connection = new signalR.HubConnectionBuilder()
+				.withUrl("https://localhost:7295/SignalRHub")
+				.build();
+
+			connection.start().then(function () {
+				setInterval(() => {
+					connection.invoke("GetCategoryCounts");
+					connection.invoke("GetFoodCounts");
+					connection.invoke("GetOrderCounts");
+					connection.invoke("GetDailyRevenue");
+					connection.invoke("GetReservationCounts");
+					connection.invoke("GetTestimonialCount");
+				    connection.invoke("GetTotalCaseAmount");
+				    connection.invoke("GetAvaliableTableCount");
+				}, 1000);
+			}).catch(function (err) {
+				console.error(err.toString());
+			});
+
+			connection.on("ReceiveCategoryCounts", (categoryCounts) => {
+				$("#categorycount").text(categoryCounts.totalCount);
+				$("#activecategorycount").text(categoryCounts.activeCount);
+				$("#passivecategorycount").text(categoryCounts.passiveCount);
+			});
+			connection.on("ReceiveFoodCounts", (foodCounts) => {
+			    $("#foodcount").text(foodCounts.totalCount);
+			    $("#activefoodcount").text(foodCounts.activeCount);
+			    $("#passivefoodcount").text(foodCounts.passiveCount);
+		    });
+		    connection.on("ReceiveOrderCounts", (orderCounts) => {
+			    $("#ordercount").text(orderCounts.totalCount);
+			    $("#activeordercount").text(orderCounts.activeCount);
+			    $("#passiveordercount").text(orderCounts.passiveCount);
+		    });
+			connection.on("ReceiveReservationCounts", (reservationCounts) => {
+			    $("#bookingcount").text(reservationCounts.totalCount);
+		     	$("#activebookingcount").text(reservationCounts.activeCount);
+			    $("#passivebookingcount").text(reservationCounts.passiveCount);
+		    });
+		    connection.on("ReceiveDailyRevenue", (dailyRevenue) => {
+			    const formatted = Number(dailyRevenue).toFixed(2);
+			    $("#dailyrevenue").text(`$${formatted}`);
+		    });
+		    connection.on("ReceiveTestimonialCount", (testimonialCount) => {
+			    $("#testimonialcount").text(testimonialCount);
+		    });
+			connection.on("ReceiveTotalCaseAmount", (totalCaseAmount) => {
+				const formatted = Number(totalCaseAmount).toFixed(2);
+				$("#totalrevenue").text(`$${formatted}`);
+		    });
+			connection.on("ReceiveAvaliableTableCount", (avaliableTableCount) => {
+				$("#avaliabletables").text(avaliableTableCount);
+		    });
+        });
+
+	</script>
+}

@@ -34,9 +34,6 @@
                 .build();
 
             $("#connectionstatus").text(connection.state);
-
-        
-
             connection.start().then(function () {
                 $("#connectionstatus").text(connection.state);
                 setInterval(()=>{
