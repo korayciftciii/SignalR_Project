@@ -27,5 +27,15 @@ namespace WebUI.Controllers
             }
             return View(new List<ResultBasketDto>());
         }
+        public async Task<IActionResult> BasketItemDelete(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.DeleteAsync($"https://localhost:7295/api/v1/Basket/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return NoContent();
+        }
     }
 }

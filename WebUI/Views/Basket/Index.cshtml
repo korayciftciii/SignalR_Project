@@ -73,9 +73,9 @@
                                         <td>@item.Count</td>
                                         <td>$@item.TotalPrice</td>
                                         <td>
-                                            <button class="btn btn-outline-danger btn-sm" data-basketid="@item.BasketId" id="btndeletebasketid">
+                                            <a href="/Basket/BasketItemDelete?id=@item.BasketId" class="btn btn-outline-danger btn-sm">
                                                 <i class="bi bi-trash"></i>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 }
