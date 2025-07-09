@@ -1,0 +1,16 @@
+﻿namespace WebUI.DataTransferObjects.BasketDtos
+{
+    public class ResultBasketDto
+    {
+        public int BasketId { get; set; }
+        public decimal Price { get; set; }
+        public int Count { get; set; }
+        public decimal TotalPrice { get; set; }
+
+        public int FoodId { get; set; }
+
+        public int RestaurantTableId { get; set; }
+        public string TableNumber { get; set; }
+        public string FoodName { get; set; }
+    }
+}

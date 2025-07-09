@@ -13,5 +13,6 @@ namespace Web.EntityLayer.Entities
         public int Capacity { get; set; }
 
         public bool IsAvailable { get; set; } = true;
+        public List<Basket> Baskets { get; set; }
     }
 }

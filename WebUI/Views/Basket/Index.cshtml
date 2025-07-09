@@ -1,0 +1,132 @@
+﻿@model List<ResultBasketDto>
+@{
+    Layout = null;
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    int count=0;
+    var total = Model.Sum(x => x.TotalPrice);
+    var taxePercantage = 5; // 5% tax
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Component.InvokeAsync("UIHeader")
+</head>
+<body class="@(currentController=="Home" ? "" : "sub_page")">
+    <div class="hero_area">
+        <div class="bg-box">
+            <img src="~/feane-1.0.0/images/hero-bg.jpg" alt="">
+        </div>
+        @if (currentController == "Home")
+        {
+            @await Component.InvokeAsync("UIAppBar")
+            @await Component.InvokeAsync("UIAppBarSlider")
+        }
+        else
+        {
+            @await Component.InvokeAsync("UIAppBar")
+        }
+    </div>
+    <div class="container my-5">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-light p-3 rounded shadow-sm">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark">
+                        <i class="bi bi-house-door"></i> Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Your Cart</li>
+            </ol>
+        </nav>
+
+        <div class="row g-4">
+            <!-- Cart Table -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-warning text-white fw-bold">
+                        <i class="bi bi-cart-fill"></i> Your Cart
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Table</th>
+                                    <th>Food</th>
+                                    <th>Unit Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.TableNumber</td>
+                                        <td>@item.FoodName</td>
+                                        <td>$@item.Price</td>
+                                        <td>@item.Count</td>
+                                        <td>$@item.TotalPrice</td>
+                                        <td>
+                                            <button class="btn btn-outline-danger btn-sm" data-basketid="@item.BasketId" id="btndeletebasketid">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="col-lg-4">
+                <!-- Coupon Code -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="mb-3"><i class="bi bi-ticket-perforated"></i> Coupon</h5>
+                        <div class="input-group">
+                            <input type="text" placeholder="Enter Coupon Code" class="form-control">
+                            <button class="btn btn-warning" type="button" id="btncouponcode">Apply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="card bg-dark text-white shadow-sm">
+                    <div class="card-body">
+                        <h5 class="border-bottom pb-2 mb-3"><i class="bi bi-receipt"></i> Cart Summary</h5>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Sub Total:</span>
+                            <span id="subtotal">$@total</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tax Percentage:</span>
+                            <span id="taxePercantage">@taxePercantage %</span>
+                        </div>
+                        <div class="d-flex justify-content-between fw-bold fs-5 border-top pt-3">
+                            <span>Total:</span>
+                            <span id="total">$@(total + ((total / 100) * taxePercantage))</span>
+                        </div>
+                        <div class="mt-4">
+                            <button id="btncheckout" class="btn btn-warning w-100 fw-bold">
+                                <i class="bi bi-check-circle"></i> Complete Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @await Component.InvokeAsync("UIFooter")
+    @await Component.InvokeAsync("UIScripts")
+</body>
+</html>

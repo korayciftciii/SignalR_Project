@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Web.DataTransferObject\Web.DataTransferObject.csproj" />
     <ProjectReference Include="..\Web.EntityLayer\Web.EntityLayer.csproj" />
   </ItemGroup>
 

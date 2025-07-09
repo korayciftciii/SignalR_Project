@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text.Json.Serialization;
 using Web.DataAccessLayer.Abstract;
 using Web.DataAccessLayer.Concrete;
 using Web.DataAccessLayer.EntityFramework;
@@ -61,7 +62,12 @@ builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
 
 builder.Services.AddScoped<IRestaurantTableDAL, EFRestaurantTableDAL>();
 builder.Services.AddScoped<IRestaurantTableService, RestaurantTableManager>();
+
+builder.Services.AddScoped<IBasketDAL, EFBasketDAL>();
+builder.Services.AddScoped<IBasketService, BasketManager>();
 // Add services to the container.
+
+builder.Services.AddControllersWithViews().AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddControllers();
 
