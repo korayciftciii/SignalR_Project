@@ -10,10 +10,8 @@
 			<thead>
 				<tr>
 					<th scope="col">#</th>
-                    <th scope="col">Slider Image</th>
 					<th scope="col">Slider Title</th>
 					<th scope="col">Slider Description</th>
-					<th scope="col">Button Url</th>
 					<th scope="col">Is Active</th>
 					<th scope="col">Update</th>
 					<th scope="col">Delete</th>
@@ -24,10 +22,8 @@
 				{	
 					<tr>
                         <td>@item.SliderId</td>
-						<td><img width="25" height="25" src="@item.ImageUrl" alt="@item.SliderTitle" /></td>
 						<td>@item.SliderTitle</td>
 						<td>@item.SliderDescription</td>
-						<td><a href="@item.ButtonUrl" class="btn btn-primary" target="_blank">@item.ButtonLabel <i class="la la-external-link"></i></a></td>
 						<td>
 							@if (item.FeatureStatus)
 							{

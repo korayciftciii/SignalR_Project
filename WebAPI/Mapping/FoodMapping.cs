@@ -12,6 +12,8 @@ namespace WebAPI.Mapping
             CreateMap<Food, CreateFoodDto>().ReverseMap();
             CreateMap<Food, UpdateFoodDto>().ReverseMap();
             CreateMap<Food,GetFoodByIdDto>().ReverseMap();
+            CreateMap<Food, ResultFoodWithCategoryDto>()
+          .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName));
         }
     }
 }

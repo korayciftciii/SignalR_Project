@@ -25,6 +25,11 @@ namespace WebAPI.Controllers
             var values = _mapper.Map<List<ResultFoodDto>>(_foodService.TGetAll());
             return Ok(values);
         }
+        [HttpGet("FoodGetWithCategory")]
+        public IActionResult FoodGetWithCategory() {
+            var values = _mapper.Map<List<ResultFoodWithCategoryDto>>(_foodService.TFoodGetWithCategory()); ;
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public IActionResult FoodGetById(int id)
         {

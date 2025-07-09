@@ -5,7 +5,22 @@
 <!-- end offer section -->
 
 <!-- food section -->
-@await Component.InvokeAsync("UIFoodSection")
+<section class="food_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Our Menu
+            </h2>
+        </div>
+        @await Component.InvokeAsync("UIFoodFilterMenu")
+        @await Component.InvokeAsync("UIFoodFilterContent")
+        <div class="btn-box">
+            <a asp-controller="Menu" asp-action="Index">
+                View More
+            </a>
+        </div>
+    </div>
+</section>
 <!-- end food section -->
 <!-- about section -->
 
@@ -31,7 +46,7 @@
                         are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
                         the middle of text. All
                     </p>
-                    <a href="">
+                    <a asp-controller="About" asp-action="Index">
                         Read More
                     </a>
                 </div>

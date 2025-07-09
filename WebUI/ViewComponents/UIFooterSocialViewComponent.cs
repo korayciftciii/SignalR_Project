@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
-using WebUI.DataTransferObjects.SliderDtos;
+using WebUI.DataTransferObjects.SocialLinkDtos;
 
 namespace WebUI.ViewComponents
 {
-    public class UIAppBarSliderViewComponent : ViewComponent
+    public class UIFooterSocialViewComponent : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public UIAppBarSliderViewComponent(IHttpClientFactory httpClientFactory)
+        public UIFooterSocialViewComponent(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -17,14 +17,14 @@ namespace WebUI.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7295/api/v1/Slider");
+            var response = await client.GetAsync("https://localhost:7295/api/v1/SocialLink");
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultSliderDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultSocialLinkDto>>(jsonData);
                 return View(values);
             }
-            return View(new List<ResultSliderDto>());
+            return View(new List<ResultSocialLinkDto>());
         }
     }
 }

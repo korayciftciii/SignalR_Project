@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Web.DataTransferObject.FoodDTO
+﻿namespace WebUI.DataTransferObjects.FoodDtos
 {
-  public  class ResultFoodDto
+    public class ResultFoodWithCategoryDto
     {
         public int FoodId { get; set; }
         public string FoodName { get; set; } = null!;
@@ -15,9 +9,7 @@ namespace Web.DataTransferObject.FoodDTO
         public string? ImageUrl { get; set; }
         public bool FoodStatus { get; set; }
 
-        // İlişkili kategori bilgisi
         public int CategoryId { get; set; }
-
-     
+        public string CategoryName { get; set; } = null!;
     }
 }

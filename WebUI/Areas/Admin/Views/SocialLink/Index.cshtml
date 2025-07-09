@@ -10,7 +10,6 @@
 			<thead>
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">Icon</th>
 					<th scope="col">PlatformName</th>
 					<th scope="col">Update</th>
 					<th scope="col">Delete</th>
@@ -21,7 +20,6 @@
 				{
 					<tr>
 						<td>@item.SocialLinkId</td>
-						<td><i class="@item.IconClass"></i></td>
 						<td><a href="@item.Url" target="_blank">@item.PlatformName <i class="la la-external-link"></i></a></td>
 						<td><a asp-area="Admin" asp-controller="SocialLink" asp-action="LinkUpdate" asp-route-linkId="@item.SocialLinkId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
 						<td><a asp-area="Admin" asp-controller="SocialLink" asp-action="LinkDelete" asp-route-linkId="@item.SocialLinkId" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>

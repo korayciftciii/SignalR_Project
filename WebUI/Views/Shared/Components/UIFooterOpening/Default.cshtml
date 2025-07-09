@@ -1,0 +1,23 @@
+﻿@model List<ResultOpeningHourDto>
+
+<div class="col-md-4 footer-col">
+    <h4>Opening Hours</h4>
+
+    @foreach (var item in Model)
+    {
+        <p>
+            @item.DayOfWeek.ToString():
+            @if (item.IsClosed)
+            {
+                <span>Closed</span>
+            }
+            else
+            {
+                <span>
+                    @(DateTime.Today.Add(item.OpenTime.Value).ToString("hh:mm tt", CultureInfo.InvariantCulture)) -
+                    @(DateTime.Today.Add(item.CloseTime.Value).ToString("hh:mm tt", CultureInfo.InvariantCulture))
+                </span>
+            }
+        </p>
+    }
+</div>

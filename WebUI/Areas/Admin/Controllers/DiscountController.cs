@@ -44,7 +44,7 @@ namespace WebUI.Areas.Admin.Controllers
             }
             return View(discountDto);
         }
-
+     
         public async Task<IActionResult> DiscountDelete(int dicountId)
         {
             var client = _httpClientFactory.CreateClient();
@@ -56,10 +56,10 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> DiscountUpdate(int dicountId)
+        public async Task<IActionResult> DiscountUpdate(int discountId)
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:7295/api/v1/Discount/{dicountId}");
+            var response = await client.GetAsync($"https://localhost:7295/api/v1/Discount/{discountId}");
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
