@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.SignalR;
 using Web.DataAccessLayer.Concrete;
+using Web.DataTransferObject.NotificationDTO;
+using Web.DataTransferObject.ReservationDTO;
 using Web.ServiceLayer.Abstract;
 using WebAPI.SignalRDTO;
 
 namespace WebAPI.Hubs
 {
-    public class SignalRHub:Hub
+    public class SignalRHub : Hub
     {
+        private readonly IMapper _mapper;
         private readonly ICategoryService _categoryService;
         private readonly IFoodService _foodService;
         private readonly IOrderService _orderService;
@@ -14,7 +18,9 @@ namespace WebAPI.Hubs
         private readonly ITestimonialService _testimonialService;
         private readonly IMoneyCaseService _moneyCaseService;
         private readonly IRestaurantTableService _restaurantTableService;
-        public SignalRHub(ICategoryService categoryService, IFoodService foodService, IOrderService orderService, IReservationService reservationService, ITestimonialService testimonialService, IMoneyCaseService moneyCaseService, IRestaurantTableService restaurantTableService)
+        private readonly INotificationService _notificationService;
+
+        public SignalRHub(ICategoryService categoryService, IFoodService foodService, IOrderService orderService, IReservationService reservationService, ITestimonialService testimonialService, IMoneyCaseService moneyCaseService, IRestaurantTableService restaurantTableService, IMapper mapper, INotificationService notificationService)
         {
             _categoryService = categoryService;
             _foodService = foodService;
@@ -23,6 +29,8 @@ namespace WebAPI.Hubs
             _testimonialService = testimonialService;
             _moneyCaseService = moneyCaseService;
             _restaurantTableService = restaurantTableService;
+            _mapper = mapper;
+            _notificationService = notificationService;
         }
 
         public async Task GetAllDashboardData()
@@ -62,5 +70,43 @@ namespace WebAPI.Hubs
             await Clients.All.SendAsync("ReceiveAllDashboardData", dashboardData);
         }
 
+        public async Task GetReservationList() {
+            var values = _mapper.Map<List<ResultReservationDto>>(_reservationService.TGetAll());
+            await Clients.All.SendAsync("ReceiveReservationList", values);
+        }
+        public async Task GetNotificationCounts ()
+        {
+            var notificationCounts = new NotificationCountDto
+            {
+                UnreadNotificationCount = _notificationService.TGetUnreadNotificationCount(),
+                NotificationCount = _notificationService.GetNotificationCount()
+            };
+        await Clients.All.SendAsync("ReceiveNotificationCount", notificationCounts);
+         }
+        public async Task GetUnreadNotifications()
+        {
+            var values = _mapper.Map<List<ResultNotificationDto>>(_notificationService.GetUnreadNotifications());
+            if (values != null && values.Count > 0)
+            {
+                await Clients.All.SendAsync("ReceiveUnreadNotifications", values);
+            }
+            else
+            {
+                await Clients.All.SendAsync("ReceiveUnreadNotifications", new List<ResultNotificationDto>());
+            }
+        }
+        public async Task GetNotificationList()
+        {
+            var values = _mapper.Map<List<ResultNotificationDto>>(_notificationService.TGetAll());
+            if (values != null && values.Count > 0)
+            {
+                await Clients.All.SendAsync("ReceiveNotificationList", values);
+            }
+            else
+            {
+                await Clients.All.SendAsync("ReceiveNotificationList", new List<ResultNotificationDto>());
+            }
+        }
     }
 }
+

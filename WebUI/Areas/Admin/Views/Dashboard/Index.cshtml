@@ -172,9 +172,7 @@ la la-table text-danger"></i>
 </div>
 
 @section Scripts {
-	<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
-	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 	<script>
 				$(function () {
 			var connection = new signalR.HubConnectionBuilder()
@@ -182,6 +180,7 @@ la la-table text-danger"></i>
 				.build();
 
 			connection.start().then(function () {
+				connection.invoke("GetAllDashboardData");
 				setInterval(() => {
 					connection.invoke("GetAllDashboardData");
 				}, 1000);

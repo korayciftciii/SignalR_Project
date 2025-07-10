@@ -17,5 +17,67 @@
     </div>
     @await Component.InvokeAsync("AdminScripts")
     @await RenderSectionAsync("Scripts", required: false)
+	<script>
+		$(function () {
+			var connection = new signalR.HubConnectionBuilder()
+				.withUrl("https://localhost:7295/SignalRHub")
+				.build();
+
+			connection.start().then(function () {
+				connection.invoke("GetNotificationCounts");
+				connection.invoke("GetUnreadNotifications");
+
+				setInterval(() => {
+					connection.invoke("GetNotificationCounts");
+				}, 5000);
+				setInterval(() => {
+					connection.invoke("GetUnreadNotifications");
+				}, 5000);
+			}).catch(function (err) {
+				console.error("SignalR Connection Error:", err.toString());
+			});
+
+			connection.on("ReceiveNotificationCount", function (notificationCounts) {
+				const unread = notificationCounts.unreadNotificationCount;
+				const total = notificationCounts.notificationCount;
+				if ($("#unreadnotification").length && $("#notificationcount").length) {
+					$("#unreadnotification").text(unread);
+					$("#notificationcount").text(total);
+				}
+			});
+			connection.on("ReceiveUnreadNotifications",function(values){
+				let color="";
+				let icon="";
+				
+			$("#notificationlist").empty();
+                values.forEach((item) => {
+					if(item.notificationType=="New Reservation")
+					{
+					color="primary";
+					icon="la la-calendar ";
+					}
+                    else if(item.notificationType=="New Comment")
+					{
+					color="success";
+					icon="la la-comment";
+					}
+					else if(item.notificationType=="New Order")
+					{
+					color="warning";
+					icon="la la-reorder";
+					}
+                    $("#notificationlist").append(`
+						<a class="dropdown-item" href="/Admin/Notification?notificationId=${item.notificationId}">
+                            <div class="notif-icon notif-${color}"> <i class="${icon}"></i> </div>
+                            <div class="notif-content">
+                                <span class="block">${item.notificationType}</span>
+                                <span class="time">${new Date(item.notificationDate).toLocaleDateString("en-US", { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                            </div>
+                        </a>
+                    `);
+                });
+			})
+		});
+	</script>
 </body>
 </html>

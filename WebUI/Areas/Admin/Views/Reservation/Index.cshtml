@@ -1,4 +1,4 @@
-﻿@model List<ResultReservationDto>
+﻿
 <h4 class="page-title">Reservations</h4>
 <div class="card">
 	<div class="card-header">
@@ -19,22 +19,45 @@
 					<th scope="col">Delete</th>
 				</tr>
 			</thead>
-			<tbody>
-				@foreach (var item in Model)
-				{
-					<tr>
-						<td>@item.ReservationId</td>
-						<td>@item.CustomerName</td>
-						<td>@item.PhoneNumber</td>
-						<td>@item.UserMail</td>
-						<td><span class="badge badge-count">@item.NumberOfCustomer.ToString()</span></td>
-						<td><span class="badge badge-primary">@item.ReservationDate.ToString("dd.MM.yyyy hh:mm tt", CultureInfo.InvariantCulture)</span></td>
-
-						<td><a asp-area="Admin" asp-controller="Reservation" asp-action="ReservationUpdate" asp-route-reservationId="@item.ReservationId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
-						<td><a asp-area="Admin" asp-controller="Reservation" asp-action="ReservationDelete" asp-route-reservationId="@item.ReservationId" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>
-					</tr>
-				}
+			<tbody id="bookinglist">
+			
 			</tbody>
 		</table>
 	</div>
 </div>
+@section Scripts {
+	<script>
+		$(function () {
+			var connection = new signalR.HubConnectionBuilder()
+				.withUrl("https://localhost:7295/SignalRHub")
+				.build();
+
+			connection.start().then(function () {
+				connection.invoke("GetReservationList"); // İlk yükleme
+				setInterval(() => {
+					connection.invoke("GetReservationList"); // Periyodik güncelleme
+				}, 5000);
+			}).catch(function (err) {
+				console.error(err.toString());
+			});
+
+			connection.on("ReceiveReservationList", (values) => {
+				$("#bookinglist").empty();
+				values.forEach((item, index) => {
+					$("#bookinglist").append(`
+						<tr>
+							<td>${item.reservationId}</td>
+							<td>${item.customerName}</td>
+							<td>${item.phoneNumber}</td>
+							<td>${item.userMail}</td>
+							<td><span class="badge badge-count">${item.numberOfCustomer}</span></td>
+							<td><span class="badge badge-primary">${new Date(item.reservationDate).toLocaleDateString("en-US", { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span></td>
+							<td><a href="/Admin/Reservation/ReservationUpdate?reservationId=${item.reservationId}" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
+							<td><a href="/Admin/Reservation/ReservationDelete?reservationId=${item.reservationId}" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>
+						</tr>
+					`);
+				});
+			});
+		});
+	</script>
+}

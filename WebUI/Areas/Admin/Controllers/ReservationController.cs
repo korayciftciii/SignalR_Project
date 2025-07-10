@@ -13,18 +13,9 @@ namespace WebUI.Areas.Admin.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7295/api/v1/Reservation");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultReservationDto>>(jsonData);
-                return View(values);
-            }
-            return View(new List<ResultReservationDto>());
+            return View();
         }
         [HttpGet]
         public IActionResult ReservationAdd()

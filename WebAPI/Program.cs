@@ -65,6 +65,9 @@ builder.Services.AddScoped<IRestaurantTableService, RestaurantTableManager>();
 
 builder.Services.AddScoped<IBasketDAL, EFBasketDAL>();
 builder.Services.AddScoped<IBasketService, BasketManager>();
+
+builder.Services.AddScoped<INotificationDAL, EFNotificationDAL>();
+builder.Services.AddScoped<INotificationService, NotificationManager>();
 // Add services to the container.
 
 builder.Services.AddControllersWithViews().AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

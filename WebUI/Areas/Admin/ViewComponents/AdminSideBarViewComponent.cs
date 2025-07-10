@@ -6,6 +6,11 @@ namespace WebUI.Areas.Admin.ViewComponents
     {
         public IViewComponentResult Invoke()
         {
+            var controller = RouteData?.Values["controller"]?.ToString();
+     
+
+            ViewBag.CurrentController = controller;
+           
             return View();
         }
     }
