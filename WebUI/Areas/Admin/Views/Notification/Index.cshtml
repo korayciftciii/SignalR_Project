@@ -47,7 +47,7 @@
 							<td>${item.notificationType}</td>
 							<td>${item.Description}</td>
 							<td><span class="badge badge-primary">${new Date(item.notificationDate).toLocaleDateString("en-US", { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span></td>
-							<td><span class="badge badge-${item.status ? 'success' : 'danger'}">${item.status ? 'Read' : 'Unread'}</span></td>
+							<td><span class="badge badge-${item.status ? 'success' : 'warning'}">${item.status ? 'Read' : 'Unread'}</span></td>
 							<td><a href="/Admin/Notification/NotificationUpdate?notificationId=${item.notificationId}" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
 							<td><a href="/Admin/Notification/NotificationDelete?notificationId=${item.notificationId}" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>
 						</tr>
