@@ -1,0 +1,34 @@
+﻿@model UpdateNotificationDto
+<h4 class="page-title">Update Notification</h4>
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Update Form</div>
+	</div>
+	<form asp-action="NotificationUpdate" method="post">
+		<input type="hidden" asp-for="NotificationId"/>
+		<div class="card-body">
+			<div class="form-group">
+				<label asp-for="NotificationType">Notification Type</label>
+				<select class="form-control input-pill" asp-for="NotificationType">
+					<option>Choose a type</option>
+					<option value="New Reservation">New Reservation</option>
+					<option value="New Comment">New Comment</option>
+					<option value="New Order">New Order</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label asp-for="Description">Description</label>
+				<textarea class="form-control" asp-for="Description" rows="5"></textarea>
+			</div>
+			<div class="form-group">
+				<label asp-for="Status">Is Read ?</label>
+				<input asp-for="Status" type="checkbox" data-toggle="toggle" data-onstyle="success" data-style="btn-round">
+			</div>
+		</div>
+		<div class="card-action">
+		<button class="btn btn-success" type="submit"><i class="la la-save"></i>Save</button>
+			<a class="btn btn-danger" asp-action="Index" asp-controller="Notification" asp-area="Admin"><i class="la la-close"></i> Cancel</a>
+		</div>
+	</form>
+</div>

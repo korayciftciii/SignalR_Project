@@ -40,5 +40,15 @@ namespace Web.DataAccessLayer.EntityFramework
                 .ToList();
             return unreadNotifications;
         }
+
+        public void ToggleNotificationStatus(int notificationId)
+        {
+            using var context = new ApplicationContext();
+            var notification = context.Notifications
+                .FirstOrDefault(n => n.NotificationId == notificationId);
+                notification.Status = !notification.Status; // true ise false, false ise true yap
+                context.SaveChanges(); // değişikliği veritabanına kaydet
+            
+        }
     }
 }

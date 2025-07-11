@@ -59,6 +59,7 @@
 				if ($("#unreadnotification").length && $("#notificationcount").length) {
 					$("#unreadnotification").text(unread);
 					$("#notificationcount").text(total);
+					$("#sidebarnotificationcount").text(total);
 				}
 			});
 
@@ -80,7 +81,7 @@
 					}
 
 					$("#notificationlist").append(`
-						<a class="dropdown-item" href="/Admin/Notification?notificationId=${item.notificationId}">
+						<a class="dropdown-item" href="/Admin/Notification/NotificationDetail/${item.notificationId}">
 							<div class="notif-icon notif-${color}"> <i class="${icon}"></i> </div>
 							<div class="notif-content">
 								<span class="block">${item.notificationType}</span>

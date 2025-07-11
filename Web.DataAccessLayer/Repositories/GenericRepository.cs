@@ -39,6 +39,7 @@ namespace Web.DataAccessLayer.Repositories
             if (entity == null)
             {
                 throw new InvalidOperationException($"Entity of type {typeof(T).Name} with id {id} was not found.");
+
             }
             return entity;
         }

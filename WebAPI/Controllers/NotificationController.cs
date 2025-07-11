@@ -36,6 +36,7 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
+        
         [HttpDelete("{id}")]
         public IActionResult NotificationDelete(int id)
         {
@@ -94,6 +95,17 @@ namespace WebAPI.Controllers
         {
             var values = _mapper.Map<List<ResultNotificationDto>>(_notificationService.GetUnreadNotifications());
             return Ok(values);
+        }
+        [HttpPut("ToggleNotificationStatus/{notificationId}")]
+        public IActionResult ToggleNotificationStatus(int notificationId)
+        {
+            var notification = _notificationService.TGetById(notificationId);
+            if (notification == null)
+            {
+                return NotFound();
+            }
+            _notificationService.ToggleNotificationStatus(notificationId);
+            return Ok("Notification status toggled successfully.");
         }
     }
 }

@@ -67,7 +67,7 @@
 				<a asp-controller="Notification" asp-action="Index" asp-area="Admin">
 					<i class="la la-bell"></i>
 					<p>Notifications</p>
-					<span class="badge badge-count">6</span>
+					<span class="badge badge-danger" id="sidebarnotificationcount">0</span>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Discount" ? "active" : "")">

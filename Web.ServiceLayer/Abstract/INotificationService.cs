@@ -12,6 +12,8 @@ namespace Web.ServiceLayer.Abstract
         public int TGetUnreadNotificationCount();
         public int GetNotificationCount();
         List<Notification> GetUnreadNotifications();
+        void ToggleNotificationStatus(int notificationId);
+
 
     }
 }

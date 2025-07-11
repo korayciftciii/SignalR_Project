@@ -12,5 +12,6 @@ namespace Web.DataAccessLayer.Abstract
         public int GetUnreadNotificationCount();
         public int GetNotificationCount();
         List<Notification> GetUnreadNotifications();
+        void ToggleNotificationStatus(int notificationId);
     }
 }

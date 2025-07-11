@@ -58,6 +58,11 @@ namespace Web.ServiceLayer.Concrete
             _notificationDAL.Insert(entity);
         }
 
+        public void ToggleNotificationStatus(int notificationId)
+        {
+            _notificationDAL.ToggleNotificationStatus(notificationId);
+        }
+
         public void TUpdate(Notification entity)
         {
             _notificationDAL.Update(entity);

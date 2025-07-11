@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Web.DataTransferObject.NotificationDTO
+﻿namespace WebUI.DataTransferObjects.NotificationDtos
 {
-   public class CreateNotificationDto
+    public class CreateNotificationDto
     {
         public string NotificationType { get; set; }
         public string Description { get; set; }

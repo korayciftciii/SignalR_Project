@@ -107,6 +107,7 @@ namespace WebAPI.Hubs
                 await Clients.All.SendAsync("ReceiveNotificationList", new List<ResultNotificationDto>());
             }
         }
+
     }
 }
 
