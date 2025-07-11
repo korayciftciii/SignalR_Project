@@ -16,6 +16,14 @@ namespace Web.DataAccessLayer.EntityFramework
         {
         }
 
+        public List<RestaurantTable> GetAvailableTables()
+        {
+          var values = new List<RestaurantTable>();
+            using var context = new ApplicationContext();
+            values = context.RestaurantTables.Where(t => t.IsAvailable == true).ToList();
+            return values;
+        }
+
         public int GetAvaliableTableCount()
         {
             using var context=new ApplicationContext();
@@ -27,6 +35,14 @@ namespace Web.DataAccessLayer.EntityFramework
             using var context = new ApplicationContext();
             var count=context.RestaurantTables.Count(t => t.IsAvailable == false);
             return count;
+        }
+
+        public List<RestaurantTable> GetOccupiedTables()
+        {
+            var values = new List<RestaurantTable>();
+            using var context = new ApplicationContext();
+            values = context.RestaurantTables.Where(t => t.IsAvailable == false).ToList();
+            return values;
         }
 
         public int GetTableCount()

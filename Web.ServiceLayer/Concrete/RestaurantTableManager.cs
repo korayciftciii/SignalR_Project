@@ -47,10 +47,22 @@ namespace Web.ServiceLayer.Concrete
             return data;
         }
 
+        public List<RestaurantTable> TGetAvailableTables()
+        {
+            var values=_restaurantTableDAL.GetAvailableTables();
+            return values;
+        }
+
         public RestaurantTable TGetById(int id)
         {
             var item = _restaurantTableDAL.GetById(id);
             return item;
+        }
+
+        public List<RestaurantTable> TGetOccupiedTables()
+        {
+            var values = _restaurantTableDAL.GetOccupiedTables();
+            return values;
         }
 
         public void TInsert(RestaurantTable entity)

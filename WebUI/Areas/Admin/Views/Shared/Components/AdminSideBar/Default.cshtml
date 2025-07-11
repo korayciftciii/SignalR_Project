@@ -1,59 +1,10 @@
 ﻿<div class="sidebar">
 	<div class="scrollbar-inner sidebar-wrapper">
-		<div class="user">
-			<div class="photo">
-				<img src="~/dashboard/assets/img/profile.jpg">
-			</div>
-			<div class="info">
-				<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-					<span>
-						Hizrian
-						<span class="user-level">Administrator</span>
-						<span class="caret"></span>
-					</span>
-				</a>
-				<div class="clearfix"></div>
-
-				<div class="collapse in" id="collapseExample" aria-expanded="true" style="">
-					<ul class="nav">
-						<li>
-							<a href="#profile">
-								<span class="link-collapse">My Profile</span>
-							</a>
-						</li>
-						<li>
-							<a href="#edit">
-								<span class="link-collapse">Edit Profile</span>
-							</a>
-						</li>
-						<li>
-							<a href="#settings">
-								<span class="link-collapse">Settings</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
 		<ul class="nav">
 			<li class="nav-item @(ViewBag.CurrentController == "Dashboard" ? "active" : "")">
 				<a asp-controller="Dashboard" asp-action="Index" asp-area="Admin">
 					<i class="la la-dashboard"></i>
 					<p>Dashboard</p>
-				</a>
-			</li>
-			<li class="nav-item @(ViewBag.CurrentController == "Food" ? "active" : "")">
-				<a asp-controller="Food" asp-action="Index" asp-area="Admin">
-					<i class="la la-list"></i>
-					<p>Foods</p>
-					<span class="badge badge-success">3</span>
-				</a>
-			</li>
-			<li class="nav-item @(ViewBag.CurrentController == "Category" ? "active" : "")">
-				<a asp-controller="Category" asp-action="Index" asp-area="Admin">
-					<i class="la la-tags"></i>
-					<p>Categories</p>
-					<span class="badge badge-danger">25</span>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Reservation" ? "active" : "")">
@@ -70,17 +21,38 @@
 					<span class="badge badge-danger" id="sidebarnotificationcount">0</span>
 				</a>
 			</li>
-			<li class="nav-item @(ViewBag.CurrentController == "Discount" ? "active" : "")">
-				<a asp-controller="Discount" asp-action="Index" asp-area="Admin">
-					<i class="la la-money"></i>
-					<p>Discounts</p>
+			<li class="nav-item @(ViewBag.CurrentController == "Food" ? "active" : "")">
+				<a asp-controller="Food" asp-action="Index" asp-area="Admin">
+					<i class="la la-list"></i>
+					<p>Foods</p>
+					<span class="badge badge-success">3</span>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Testimonial" ? "active" : "")">
 				<a asp-controller="Testimonial" asp-action="Index" asp-area="Admin">
-					<i class="la la-edit"></i>
-					<p>Testimonails</p>
+					<i class="la la-comment"></i>
+					<p>Comments</p>
 					<span class="badge badge-count">14</span>
+				</a>
+			</li>
+			<li class="nav-item @(ViewBag.CurrentController == "RestaurantTable" ? "active" : "")">
+				<a asp-controller="RestaurantTable" asp-action="Index" asp-area="Admin">
+					<i class="la la-edit"></i>
+					<p>Tables</p>
+					<span class="badge badge-count">14</span>
+				</a>
+			</li>
+			<li class="nav-item @(ViewBag.CurrentController == "Category" ? "active" : "")">
+				<a asp-controller="Category" asp-action="Index" asp-area="Admin">
+					<i class="la la-tags"></i>
+					<p>Categories</p>
+					<span class="badge badge-danger">25</span>
+				</a>
+			</li>
+			<li class="nav-item @(ViewBag.CurrentController == "Discount" ? "active" : "")">
+				<a asp-controller="Discount" asp-action="Index" asp-area="Admin">
+					<i class="la la-money"></i>
+					<p>Discounts</p>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Slider" ? "active" : "")">

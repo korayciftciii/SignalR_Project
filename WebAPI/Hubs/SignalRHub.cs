@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 using Web.DataAccessLayer.Concrete;
 using Web.DataTransferObject.NotificationDTO;
 using Web.DataTransferObject.ReservationDTO;
+using Web.DataTransferObject.RestaurantTableDto;
 using Web.ServiceLayer.Abstract;
 using WebAPI.SignalRDTO;
 
@@ -105,6 +106,30 @@ namespace WebAPI.Hubs
             else
             {
                 await Clients.All.SendAsync("ReceiveNotificationList", new List<ResultNotificationDto>());
+            }
+        }
+        public async Task GetAvailableTables()
+        {
+            var values = _mapper.Map<List<ResultRestaurantTableDto>>(_restaurantTableService.TGetAvailableTables());
+            if (values != null && values.Count > 0)
+            {
+                await Clients.All.SendAsync("ReceiveAvailableTables", values);
+            }
+            else
+            {
+                await Clients.All.SendAsync("ReceiveAvailableTables", new List<ResultRestaurantTableDto>());
+            }
+        }
+        public async Task GetOccupiedTables()
+        { 
+        var values = _mapper.Map<List<ResultRestaurantTableDto>>(_restaurantTableService.TGetOccupiedTables());
+            if (values != null && values.Count > 0)
+            {
+                await Clients.All.SendAsync("ReceiveOccupiedTables", values);
+            }
+            else
+            {
+                await Clients.All.SendAsync("ReceiveOccupiedTables", new List<ResultRestaurantTableDto>());
             }
         }
 

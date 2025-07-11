@@ -12,5 +12,7 @@ namespace Web.ServiceLayer.Abstract
         public int GetTableCount();
         public int GetAvaliableTableCount();
         public int GetOccupiedTableCount();
+        List<RestaurantTable> TGetAvailableTables();
+        List<RestaurantTable> TGetOccupiedTables();
     }
 }

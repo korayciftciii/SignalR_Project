@@ -170,26 +170,73 @@ la la-table text-danger"></i>
 									</div>
 								</div> 
 </div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">Available Tables</div>
+			</div>
+			<div class="card-body">
+				<table class="table table-head-bg-success">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Table Name</th>
+							<th scope="col">Capacity</th>
+							<th scope="col">Status</th>
+						</tr>
+					</thead>
+					<tbody id="availabletableslist">
+						
+					</tbody>
+				</table>
+				<div class="card-header">
+				<div class="card-title">Occupied Tables</div>
+			</div>
+				<table class="table table-head-bg-warning mt-4">
+					<thead>
+						<tr>
+						    <th scope="col">#</th>
+							<th scope="col">Table Name</th>
+							<th scope="col">Capacity</th>
+							<th scope="col">Status</th>
+						</tr>
+					</thead>
+					<tbody id="occupiedtableslist">
+					
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div >
+</div>
 
 @section Scripts {
 
 	<script>
-				$(function () {
-			var connection = new signalR.HubConnectionBuilder()
-				.withUrl("https://localhost:7295/SignalRHub")
-				.build();
+	$(function () {
+	var connection = new signalR.HubConnectionBuilder()
+		.withUrl("https://localhost:7295/SignalRHub")
+		.build();
 
-			connection.start().then(function () {
+		connection.start().then(function () {
 				connection.invoke("GetAllDashboardData");
-				setInterval(() => {
-					connection.invoke("GetAllDashboardData");
-				}, 1000);
-			}).catch(function (err) {
+				connection.invoke("GetAvailableTables");
+				connection.invoke("GetOccupiedTables");
+
+				        setInterval(() => {
+					        connection.invoke("GetAllDashboardData");
+						    connection.invoke("GetAvailableTables");
+				            connection.invoke("GetOccupiedTables");
+				        }, 1000);
+
+		      })
+			  .catch(function (err) {
 				console.error(err.toString());
-			});
+			  });
 
 			connection.on("ReceiveAllDashboardData", (data) => {
-				$("#categorycount").text(data.categoryCounts.totalCount);
+	 			$("#categorycount").text(data.categoryCounts.totalCount);
 				$("#activecategorycount").text(data.categoryCounts.activeCount);
 				$("#passivecategorycount").text(data.categoryCounts.passiveCount);
 
@@ -210,7 +257,35 @@ la la-table text-danger"></i>
 				$("#totalrevenue").text(`$${Number(data.totalCaseAmount).toFixed(2)}`);
 				$("#avaliabletables").text(data.avaliableTableCount);
 			});
-		});
 
+			connection.on("ReceiveAvailableTables",(values)=>{
+			        $("#availabletableslist").empty();
+			         values.forEach((item,index) =>{
+			            $("#availabletableslist").append(`
+		                 <tr>
+							<td>${index}</td>
+							<td>${item.tableNumber}</td>
+							<td>${item.capacity}</td>
+							<td><span class="badge badge-success">Available</span></td>
+						</tr>
+			            `);
+			        });
+			});
+
+			connection.on("ReceiveOccupiedTables",(values)=>{
+			        $("#occupiedtableslist").empty();
+			         values.forEach((item,index) =>{
+			            $("#occupiedtableslist").append(`
+		                 <tr>
+							<td>${index}</td>
+							<td>${item.tableNumber}</td>
+							<td>${item.capacity}</td>
+							<td><span class="badge badge-warning">Occupied</span></td>
+						</tr>
+			            `);
+			        });
+			});
+	
+	});
 	</script>
 }

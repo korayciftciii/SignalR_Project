@@ -34,6 +34,28 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
+        [HttpGet("GetAvailableTables")]
+        public IActionResult GetAvailableTables()
+        {
+            var availableTables = _restaurantTableService.TGetAvailableTables();
+            if (availableTables == null || !availableTables.Any())
+            {
+                return NotFound("No available tables found.");
+            }
+            var result = _mapper.Map<List<ResultRestaurantTableDto>>(availableTables);
+            return Ok(result);
+        }
+        [HttpGet("GetOccupiedTables")]
+        public IActionResult GetOccupiedTables()
+        {
+            var occupiedTables = _restaurantTableService.TGetOccupiedTables();
+            if (occupiedTables == null || !occupiedTables.Any())
+            {
+                return NotFound("No occupied tables found.");
+            }
+            var result = _mapper.Map<List<ResultRestaurantTableDto>>(occupiedTables);
+            return Ok(result);
+        }
         [HttpGet("GetTableCount")]
         public IActionResult GetTableCount()
         {
@@ -80,7 +102,7 @@ namespace WebAPI.Controllers
             _restaurantTableService.TUpdate(updatedEntity);
             return Ok("Updated");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult RestaurantTableDelete(int id)
         {
             var restaurantTable = _restaurantTableService.TGetById(id);

@@ -1,0 +1,45 @@
+﻿
+@model List<ResultRestaurantTableDto>
+<h4 class="page-title">Tables</h4>
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">All Tables</div>
+		<a class="btn btn-info" asp-action="RestaurantTableAdd" asp-controller="RestaurantTable" asp-area="Admin"><i class="la la-plus"></i> Add New Table</a>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Table Number</th>
+					<th scope="col">Capacity</th>
+					<th scope="col">Is Available</th>
+					<th scope="col">Update</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.RestaurantTableId</td>
+						<td>@item.TableNumber</td>
+						<td>@item.Capacity</td>
+						<td>
+							@if (item.IsAvailable)
+							{
+								<span class="badge badge-success">Available</span>
+							}
+							else
+							{
+								<span class="badge badge-warning">Occupied</span>
+							}
+						</td>
+						<td><a asp-area="Admin" asp-controller="RestaurantTable" asp-action="RestaurantTableUpdate" asp-route-restaurantTableId="@item.RestaurantTableId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
+						<td><a asp-area="Admin" asp-controller="RestaurantTable" asp-action="RestaurantTableDelete" asp-route-restaurantTableId="@item.RestaurantTableId" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

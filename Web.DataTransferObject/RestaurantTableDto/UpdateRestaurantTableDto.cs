@@ -9,7 +9,7 @@ namespace Web.DataTransferObject.RestaurantTableDto
  public   class UpdateRestaurantTableDto
     {
         public int RestaurantTableId { get; set; }
-        public string TableNumber { get; set; } = string.Empty;
+        public string TableNumber { get; set; } 
         public int Capacity { get; set; }
 
         public bool IsAvailable { get; set; }

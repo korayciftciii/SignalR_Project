@@ -1,0 +1,37 @@
+﻿@model UpdateRestaurantTableDto
+<h4 class="page-title">Update Table</h4>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Update Form</div>
+    </div>
+    <form asp-action="RestaurantTableUpdate" method="post">
+        <input type="hidden" asp-for="RestaurantTableId"/>
+        <div class="card-body">
+
+            <div class="form-group">
+                <label asp-for="TableNumber">Table Number</label>
+                <input asp-for="TableNumber" type="text" class="form-control input-pill" />
+                <span asp-validation-for="TableNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacity">Capacity</label>
+                <input asp-for="Capacity" type="number" min="1" class="form-control input-pill" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsAvailable">Is Available</label>
+                <input asp-for="IsAvailable" type="checkbox" data-toggle="toggle" data-onstyle="success" data-style="btn-round">
+            </div>
+        </div>
+
+        <div class="card-action">
+            <button class="btn btn-success" type="submit">
+                <i class="la la-save"></i>Save
+            </button>
+            <a class="btn btn-danger" asp-action="Index" asp-controller="RestaurantTable" asp-area="Admin">
+                <i class="la la-close"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>

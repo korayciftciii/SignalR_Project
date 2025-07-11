@@ -8,7 +8,7 @@ namespace Web.DataTransferObject.RestaurantTableDto
 {
    public class CreateRestaurantTableDto
     {
-        public string RestaurantTableNumber { get; set; } = string.Empty;
+        public string RestaurantTableNumber { get; set; } 
         public int Capacity { get; set; }
 
         public bool IsAvailable { get; set; } = true;

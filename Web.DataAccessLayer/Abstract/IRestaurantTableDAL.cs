@@ -12,5 +12,7 @@ namespace Web.DataAccessLayer.Abstract
         public int GetTableCount();
         public int GetAvaliableTableCount();
         public int GetOccupiedTableCount();
+        List<RestaurantTable> GetAvailableTables();
+        List<RestaurantTable> GetOccupiedTables();
     }
 }
