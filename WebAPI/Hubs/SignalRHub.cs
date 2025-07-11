@@ -33,7 +33,7 @@ namespace WebAPI.Hubs
             _mapper = mapper;
             _notificationService = notificationService;
         }
-
+        int clientCount = 0;
         public async Task GetAllDashboardData()
         {
             var dashboardData = new DashboardDataDto
@@ -71,19 +71,20 @@ namespace WebAPI.Hubs
             await Clients.All.SendAsync("ReceiveAllDashboardData", dashboardData);
         }
 
-        public async Task GetReservationList() {
+        public async Task GetReservationList()
+        {
             var values = _mapper.Map<List<ResultReservationDto>>(_reservationService.TGetAll());
             await Clients.All.SendAsync("ReceiveReservationList", values);
         }
-        public async Task GetNotificationCounts ()
+        public async Task GetNotificationCounts()
         {
             var notificationCounts = new NotificationCountDto
             {
                 UnreadNotificationCount = _notificationService.TGetUnreadNotificationCount(),
                 NotificationCount = _notificationService.GetNotificationCount()
             };
-        await Clients.All.SendAsync("ReceiveNotificationCount", notificationCounts);
-         }
+            await Clients.All.SendAsync("ReceiveNotificationCount", notificationCounts);
+        }
         public async Task GetUnreadNotifications()
         {
             var values = _mapper.Map<List<ResultNotificationDto>>(_notificationService.GetUnreadNotifications());
@@ -121,8 +122,8 @@ namespace WebAPI.Hubs
             }
         }
         public async Task GetOccupiedTables()
-        { 
-        var values = _mapper.Map<List<ResultRestaurantTableDto>>(_restaurantTableService.TGetOccupiedTables());
+        {
+            var values = _mapper.Map<List<ResultRestaurantTableDto>>(_restaurantTableService.TGetOccupiedTables());
             if (values != null && values.Count > 0)
             {
                 await Clients.All.SendAsync("ReceiveOccupiedTables", values);
@@ -132,7 +133,22 @@ namespace WebAPI.Hubs
                 await Clients.All.SendAsync("ReceiveOccupiedTables", new List<ResultRestaurantTableDto>());
             }
         }
-
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("RecieveMessage", user, message);
+        }
+        public override async Task OnConnectedAsync()
+        {
+            clientCount++;
+            await Clients.All.SendAsync("RecieveClientCount", clientCount);
+            await base.OnConnectedAsync();
+        }
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            clientCount--;
+            await Clients.All.SendAsync("RecieveClientCount", clientCount);
+            await base.OnDisconnectedAsync(exception);
+        }
     }
 }
 
