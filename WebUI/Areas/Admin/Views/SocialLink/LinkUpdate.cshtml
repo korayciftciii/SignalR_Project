@@ -5,16 +5,18 @@
 	<div class="card-header">
 		<div class="card-title">UpdateForm</div>
 	</div>
-	<form asp-action="LinkAdd" method="post">
+	<form asp-action="LinkAdd" method="post" novalidate>
 		<div class="card-body">
 			<input type="hidden" asp-for="SocialLinkId" />
 			<div class="form-group">
 				<label asp-for="PlatformName">Platform Name</label>
 				<input asp-for="PlatformName" type="text" class="form-control input-pill">
+				<span asp-validation-for="PlatformName" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Url">Account Url</label>
 				<input asp-for="Url" type="text" class="form-control input-pill">
+				<span asp-validation-for="Url" class="text-danger"></span>
 			</div>
 
 			<div class="form-group">
@@ -26,6 +28,7 @@
 					<option value="fa fa-linkedin"><i class="fa fa-linkedin"></i> Linkedin</option>
 					<option value="fa fa-pinterest"><i class="fa fa-pinterest"></i> Pinterest</option>
 				</select>
+				<span asp-validation-for="IconClass" class="text-danger"></span>
 			</div>
 		</div>
 		<div class="card-action">

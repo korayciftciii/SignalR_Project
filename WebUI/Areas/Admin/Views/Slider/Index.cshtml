@@ -1,4 +1,7 @@
 ﻿@model List<ResultSliderDto>
+@{
+	int count=0;
+}
 <h4 class="page-title">Slider Features</h4>
 <div class="card">
 	<div class="card-header">
@@ -19,9 +22,10 @@
 			</thead>
 			<tbody>
 				@foreach(var item in Model)
-				{	
+				{
+					count++;
 					<tr>
-                        <td>@item.SliderId</td>
+                        <td>@count</td>
 						<td>@item.SliderTitle</td>
 						<td>@item.SliderDescription</td>
 						<td>

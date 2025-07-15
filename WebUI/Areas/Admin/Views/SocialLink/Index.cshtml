@@ -1,4 +1,7 @@
 ﻿@model List<ResultSocialLinkDto>
+@{
+	int count = 0;
+}
 <h4 class="page-title">Social Links</h4>
 <div class="card">
 	<div class="card-header">
@@ -18,8 +21,9 @@
 			<tbody>
 				@foreach (var item in Model)
 				{
+					count++;
 					<tr>
-						<td>@item.SocialLinkId</td>
+						<td>@count</td>
 						<td><a href="@item.Url" target="_blank">@item.PlatformName <i class="la la-external-link"></i></a></td>
 						<td><a asp-area="Admin" asp-controller="SocialLink" asp-action="LinkUpdate" asp-route-linkId="@item.SocialLinkId" class="btn btn-success"><i class="la la-edit"></i> Update</a></td>
 						<td><a asp-area="Admin" asp-controller="SocialLink" asp-action="LinkDelete" asp-route-linkId="@item.SocialLinkId" class="btn btn-danger"><i class="la la-trash"></i> Delete</a></td>

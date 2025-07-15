@@ -33,7 +33,7 @@ namespace WebAPI.Hubs
             _mapper = mapper;
             _notificationService = notificationService;
         }
-        int clientCount = 0;
+        public static int clientCount { get; set; } = 0;
         public async Task GetAllDashboardData()
         {
             var dashboardData = new DashboardDataDto
@@ -139,13 +139,13 @@ namespace WebAPI.Hubs
         }
         public override async Task OnConnectedAsync()
         {
-            clientCount++;
+            clientCount=clientCount + 1;
             await Clients.All.SendAsync("RecieveClientCount", clientCount);
             await base.OnConnectedAsync();
         }
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            clientCount--;
+            clientCount = clientCount - 1;
             await Clients.All.SendAsync("RecieveClientCount", clientCount);
             await base.OnDisconnectedAsync(exception);
         }

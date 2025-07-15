@@ -1,10 +1,19 @@
-﻿namespace WebUI.DataTransferObjects.SliderDtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebUI.DataTransferObjects.SliderDtos
 {
     public class CreateSliderDto
     {
+        [Required(ErrorMessage = "Slider title is required.")]
+        [StringLength(150, ErrorMessage = "Slider title cannot exceed 150 characters.")]
         public string SliderTitle { get; set; } = null!;
+
+        [StringLength(500, ErrorMessage = "Slider description cannot exceed 500 characters.")]
         public string? SliderDescription { get; set; }
+
+        [StringLength(50, ErrorMessage = "Button label cannot exceed 50 characters.")]
         public string? ButtonLabel { get; set; }
+
         public bool FeatureStatus { get; set; }
     }
 }

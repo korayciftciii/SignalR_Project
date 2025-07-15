@@ -5,7 +5,7 @@
     <div class="card-header">
         <div class="card-title">Update Form</div>
     </div>
-    <form asp-action="RestaurantTableUpdate" method="post">
+    <form asp-action="RestaurantTableUpdate" method="post" novalidate>
         <input type="hidden" asp-for="RestaurantTableId"/>
         <div class="card-body">
 
@@ -27,7 +27,7 @@
 
         <div class="card-action">
             <button class="btn btn-success" type="submit">
-                <i class="la la-save"></i>Save
+                <i class="la la-save"></i> Save
             </button>
             <a class="btn btn-danger" asp-action="Index" asp-controller="RestaurantTable" asp-area="Admin">
                 <i class="la la-close"></i> Cancel

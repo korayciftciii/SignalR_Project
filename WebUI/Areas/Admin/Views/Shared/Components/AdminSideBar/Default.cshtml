@@ -11,7 +11,7 @@
 				<a asp-controller="Reservation" asp-action="Index" asp-area="Admin" >
 					<i class="la la-calendar-o"></i>
 					<p>Reservations</p>
-					<span class="badge badge-count">6</span>
+					<span class="badge badge-primary">6</span>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Notification" ? "active" : "")">
@@ -21,32 +21,29 @@
 					<span class="badge badge-danger" id="sidebarnotificationcount">0</span>
 				</a>
 			</li>
-			<li class="nav-item @(ViewBag.CurrentController == "Food" ? "active" : "")">
-				<a asp-controller="Food" asp-action="Index" asp-area="Admin">
-					<i class="la la-list"></i>
-					<p>Foods</p>
-					<span class="badge badge-success">3</span>
-				</a>
-			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Testimonial" ? "active" : "")">
 				<a asp-controller="Testimonial" asp-action="Index" asp-area="Admin">
 					<i class="la la-comment"></i>
 					<p>Comments</p>
-					<span class="badge badge-count">14</span>
+					<span class="badge badge-success">14</span>
+				</a>
+			</li>
+			<li class="nav-item @(ViewBag.CurrentController == "Food" ? "active" : "")">
+				<a asp-controller="Food" asp-action="Index" asp-area="Admin">
+					<i class="la la-list"></i>
+					<p>Foods</p>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "RestaurantTable" ? "active" : "")">
 				<a asp-controller="RestaurantTable" asp-action="Index" asp-area="Admin">
 					<i class="la la-edit"></i>
 					<p>Tables</p>
-					<span class="badge badge-count">14</span>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Category" ? "active" : "")">
 				<a asp-controller="Category" asp-action="Index" asp-area="Admin">
 					<i class="la la-tags"></i>
 					<p>Categories</p>
-					<span class="badge badge-danger">25</span>
 				</a>
 			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Discount" ? "active" : "")">

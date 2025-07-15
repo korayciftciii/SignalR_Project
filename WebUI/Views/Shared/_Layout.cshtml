@@ -25,10 +25,10 @@
     </div>
 
    <div>
+        <div id="activeusercount" class="d-none"></div>
+
             @RenderBody()
    </div>
-  
-
 @await Component.InvokeAsync("UIFooter")
    @await Component.InvokeAsync("UIScripts")
     @await RenderSectionAsync("Scripts", required: false)

@@ -1,5 +1,8 @@
 ﻿
 @model List<ResultRestaurantTableDto>
+@{
+	int count = 0;
+}
 <h4 class="page-title">Tables</h4>
 <div class="card">
 	<div class="card-header">
@@ -21,8 +24,9 @@
 			<tbody>
 				@foreach (var item in Model)
 				{
+					count++;
 					<tr>
-						<td>@item.RestaurantTableId</td>
+						<td>@count</td>
 						<td>@item.TableNumber</td>
 						<td>@item.Capacity</td>
 						<td>

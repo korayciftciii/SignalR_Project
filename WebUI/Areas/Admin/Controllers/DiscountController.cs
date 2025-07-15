@@ -69,7 +69,7 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CategoryUpdate(UpdateDiscountDto discountDto)
+        public async Task<IActionResult> DiscountUpdate(UpdateDiscountDto discountDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(discountDto);

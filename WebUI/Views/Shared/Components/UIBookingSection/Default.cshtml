@@ -1,4 +1,7 @@
-﻿<section class="book_section layout_padding">
+﻿@model CreateReservationDto
+
+<!-- book section -->
+<section class="book_section layout_padding">
     <div class="container">
         <div class="heading_container">
             <h2>
@@ -8,40 +11,51 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form_container">
-                    <form action="">
+                    <form method="post" asp-action="Index" novalidate>
                         <div>
-                            <input type="text" class="form-control" placeholder="Your Name" />
+                            <input type="text" asp-for="CustomerName" class="form-control @(ViewData.ModelState["CustomerName"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Your Name" />
+                            <span asp-validation-for="CustomerName" class="invalid-feedback"></span>
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Phone Number" />
+                            <input type="text" asp-for="PhoneNumber" class="form-control @(ViewData.ModelState["PhoneNumber"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Phone Number" />
+                            <span asp-validation-for="PhoneNumber" class="invalid-feedback"></span>
                         </div>
                         <div>
-                            <input type="email" class="form-control" placeholder="Your Email" />
+                            <input type="email" asp-for="UserMail" class="form-control @(ViewData.ModelState["UserMail"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Your Email" />
+                            <span asp-validation-for="UserMail" class="invalid-feedback"></span>
                         </div>
                         <div>
-                            <select class="form-control nice-select wide">
+                            <select asp-for="NumberOfCustomer" class="form-control nice-select wide @(ViewData.ModelState["NumberOfCustomer"]?.Errors.Count > 0 ? "is-invalid" : "")">
                                 <option value="" disabled selected>
                                     How many persons?
                                 </option>
-                                <option value="">
+                                <option value="1">
+                                    1
+                                </option>
+                                <option value="2">
                                     2
                                 </option>
-                                <option value="">
+                                <option value="3">
                                     3
                                 </option>
-                                <option value="">
+                                <option value="4">
                                     4
                                 </option>
-                                <option value="">
+                                <option value="5">
                                     5
                                 </option>
+                                <option value="6">
+                                    6
+                                </option>
                             </select>
+                            <span asp-validation-for="NumberOfCustomer" class="invalid-feedback"></span>
                         </div>
                         <div>
-                            <input type="date" class="form-control">
+                            <input asp-for="ReservationDate" type="date" class="form-control @(ViewData.ModelState["ReservationDate"]?.Errors.Count > 0 ? "is-invalid" : "")">
+                            <span asp-validation-for="ReservationDate" class="invalid-feedback"></span>
                         </div>
                         <div class="btn_box">
-                            <button>
+                            <button type="submit">
                                 Book Now
                             </button>
                         </div>
@@ -56,3 +70,4 @@
         </div>
     </div>
 </section>
+<!-- end book section -->

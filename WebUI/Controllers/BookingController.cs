@@ -23,6 +23,10 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CreateReservationDto createReservation)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(createReservation);
+            }
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createReservation);
             var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");

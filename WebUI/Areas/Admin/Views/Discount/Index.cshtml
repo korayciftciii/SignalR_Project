@@ -1,5 +1,8 @@
 ﻿
 @model List<ResultDiscountDto>
+@{
+	int count = 0;
+}
 <h4 class="page-title">Discounts</h4>
 <div class="card">
 	<div class="card-header">
@@ -26,8 +29,9 @@
 			<tbody>
 				@foreach (var item in Model)
 				{
+					count++;
 					<tr>
-						<td>@item.DiscountId</td>
+						<td>@count</td>
 						<td><img width="25" height="25" src="@item.ImageUrl" alt="@item.DiscountTitle" /></td>
 						<td>@item.DiscountTitle</td>
 						<td>@item.Description</td>

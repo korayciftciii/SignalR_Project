@@ -1,4 +1,7 @@
 ﻿@model List<ResultOpeningHourDto>
+@{
+	int count =0;
+}
 <h4 class="page-title">Day of Weeks</h4>
 <div class="card">
 	<div class="card-header">
@@ -18,9 +21,10 @@
 			</thead>
 			<tbody>
 				@foreach(var item in Model)
-				{	
+				{
+					count++;
 					<tr>
-						<td>@item.OpeningHourId</td>
+						<td>@count</td>
 					
 <td>@((DayOfWeek)item.DayOfWeek)</td>
 <td>@(item.OpenTime.HasValue ? DateTime.Today.Add(item.OpenTime.Value).ToString("hh:mm tt", CultureInfo.InvariantCulture) : "-")</td>
