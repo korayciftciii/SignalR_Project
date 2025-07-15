@@ -11,8 +11,8 @@ namespace WebUI.DataTransferObjects.SocialLinkDtos
         [Required(ErrorMessage = "URL is required.")]
         [Url(ErrorMessage = "Please enter a valid URL.")]
         public string Url { get; set; } = null!;
-
+        [Required(ErrorMessage = "Icon class is required.")]
         [StringLength(100, ErrorMessage = "Icon class cannot exceed 100 characters.")]
-        public string? IconClass { get; set; }
+        public string? IconClass { get; set; } = null!;
     }
 }

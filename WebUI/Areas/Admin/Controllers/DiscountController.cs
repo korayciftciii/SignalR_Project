@@ -16,6 +16,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = "Discount";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7295/api/v1/Discount");
             if (response.IsSuccessStatusCode)
@@ -29,6 +30,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult DiscountAdd()
         {
+            ViewData["Title"] = "Discount Add";
             return View();
         }
         [HttpPost]
@@ -58,6 +60,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> DiscountUpdate(int discountId)
         {
+            ViewData["Title"] = "Discount Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/Discount/{discountId}");
             if (response.IsSuccessStatusCode)

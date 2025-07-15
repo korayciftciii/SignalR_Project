@@ -16,6 +16,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = "Comments";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7295/api/v1/Testimonial");
             if (response.IsSuccessStatusCode)
@@ -29,11 +30,16 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult TestimonialAdd()
         {
+            ViewData["Title"] = "Comment Add";
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> TestimonialAdd(CreateTestimonialDto testimonialDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(testimonialDto);
+            }
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(testimonialDto);
             var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
@@ -58,6 +64,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> TestimonialUpdate(int testimonialId)
         {
+            ViewData["Title"] = "Comment Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/Testimonial/{testimonialId}");
             if (response.IsSuccessStatusCode)
@@ -71,6 +78,10 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> TestimonialUpdate(UpdateTestimonialDto testimonialDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(testimonialDto);
+            }
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(testimonialDto);
             var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");

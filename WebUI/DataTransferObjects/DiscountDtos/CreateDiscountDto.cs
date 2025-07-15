@@ -8,15 +8,15 @@ namespace WebUI.DataTransferObjects.DiscountDtos
         [Required(ErrorMessage = "Discount title is required.")]
         [StringLength(150, ErrorMessage = "Discount title cannot exceed 150 characters.")]
         public string DiscountTitle { get; set; } = null!;
-
+        [Required(ErrorMessage = "Description is required.")]
         [StringLength(1000, ErrorMessage = "Description cannot exceed 1000 characters.")]
-        public string? Description { get; set; }
+        public string? Description { get; set; } = null!;
 
         [Range(1, 100, ErrorMessage = "Discount percentage must be between 1 and 100.")]
         public int PercentageOfDiscount { get; set; }
-
+        [Required(ErrorMessage = "Discount image is required.")]
         [Url(ErrorMessage = "Please enter a valid image URL.")]
-        public string? ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = null!;
 
         public bool DiscountStatus { get; set; }
 

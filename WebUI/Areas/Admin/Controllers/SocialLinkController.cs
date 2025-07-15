@@ -17,6 +17,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = "Social Links";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7295/api/v1/SocialLink");
             if (response.IsSuccessStatusCode)
@@ -30,7 +31,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult LinkAdd()
         {
-          
+            ViewData["Title"] = "Social Link Add";
             return View();
         }
         [HttpPost]
@@ -60,6 +61,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> LinkUpdate(int linkId)
         {
+            ViewData["Title"] = "Social Link Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/SocialLink/{linkId}");
             if (response.IsSuccessStatusCode)

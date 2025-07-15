@@ -18,6 +18,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = "Categories";
             var client = _httpClientFactory.CreateClient();
             var response=await client.GetAsync("https://localhost:7295/api/v1/Category");
             if(response.IsSuccessStatusCode)
@@ -31,6 +32,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult CategoryAdd()
         {
+            ViewData["Title"] = "Category Add";
             return View();
         }
         [HttpPost]
@@ -60,6 +62,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> CategoryUpdate(int categoryId)
         {
+            ViewData["Title"] = "Category Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/Category/{categoryId}");
             if (response.IsSuccessStatusCode)

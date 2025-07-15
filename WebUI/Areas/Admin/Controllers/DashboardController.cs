@@ -7,6 +7,7 @@ namespace WebUI.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "Dashboard";
             return View();
         }
     }

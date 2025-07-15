@@ -17,6 +17,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = "Tables";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7295/api/v1/RestaurantTable");
             if (response.IsSuccessStatusCode)
@@ -30,6 +31,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult RestaurantTableAdd()
         {
+            ViewData["Title"] = "Table Add";
             return View();
         }
         [HttpPost]
@@ -58,6 +60,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> RestaurantTableUpdate(int restaurantTableId)
         {
+            ViewData["Title"] = "Table Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/RestaurantTable/{restaurantTableId}");
             if (response.IsSuccessStatusCode)

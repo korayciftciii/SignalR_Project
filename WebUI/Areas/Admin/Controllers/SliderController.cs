@@ -19,6 +19,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = "Sliders";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7295/api/v1/Slider");
             if (response.IsSuccessStatusCode)
@@ -32,6 +33,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult SliderAdd()
         {
+            ViewData["Title"] = "Slider Add";
             return View();
         }
         [HttpPost]
@@ -61,6 +63,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> SliderUpdate(int sliderId)
         {
+            ViewData["Title"] = "Slider Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/Slider/{sliderId}");
             if (response.IsSuccessStatusCode)

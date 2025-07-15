@@ -15,11 +15,13 @@ namespace WebUI.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            ViewData["Title"] = "Reservations";
             return View();
         }
         [HttpGet]
         public IActionResult ReservationAdd()
         {
+            ViewData["Title"] = "Reservations Add";
             return View();
         }
         [HttpPost]
@@ -49,6 +51,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> ReservationUpdate(int reservationId)
         {
+            ViewData["Title"] = "Reservaton Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/Reservation/{reservationId}");
             if (response.IsSuccessStatusCode)

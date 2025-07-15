@@ -17,6 +17,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Title"] = "Notifications";
             return View();
         }
 
@@ -42,6 +43,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult NotificationAdd()
         {
+            ViewData["Title"] = "Notification Add";
             return View();
         }
         [HttpPost]
@@ -70,6 +72,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> NotificationUpdate(int notificationId)
         {
+            ViewData["Title"] = "Notification Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/Notification/{notificationId}");
             if (response.IsSuccessStatusCode)

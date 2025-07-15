@@ -16,6 +16,7 @@ namespace WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewData["Title"] = "Opening Hours";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7295/api/v1/OpeningHour");
             if (response.IsSuccessStatusCode)
@@ -30,6 +31,7 @@ namespace WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> OpeningHourUpdate(int dayId)
         {
+            ViewData["Title"] = "Opening Hour Update";
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7295/api/v1/OpeningHour/{dayId}");
             if (response.IsSuccessStatusCode)
