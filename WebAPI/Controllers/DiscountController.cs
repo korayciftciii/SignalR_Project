@@ -20,9 +20,16 @@ namespace WebAPI.Controllers
             _discountService = discountService;
         }
         [HttpGet]
-        public IActionResult DiscountList()
+        public IActionResult DiscountList(bool? active = null)
         {
-            var values = _mapper.Map<List<ResultDiscountDto>>(_discountService.TGetAll());
+            var discounts = _discountService.TGetAll();
+
+            if (active.HasValue)
+            {
+                discounts = discounts.Where(d => d.DiscountStatus == active.Value).ToList();
+            }
+
+            var values = _mapper.Map<List<ResultDiscountDto>>(discounts);
             return Ok(values);
         }
         [HttpGet("{id}")]
