@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
 using WebUI.DataTransferObjects.BasketDtos;
 
 namespace WebUI.Controllers
 {
+    [AllowAnonymous]
     public class BasketController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

@@ -68,6 +68,9 @@ builder.Services.AddScoped<IBasketService, BasketManager>();
 
 builder.Services.AddScoped<INotificationDAL, EFNotificationDAL>();
 builder.Services.AddScoped<INotificationService, NotificationManager>();
+
+builder.Services.AddScoped<IContactDAL, EFContactDAL>();
+builder.Services.AddScoped<IContactService, ContactManager>();
 // Add services to the container.
 
 builder.Services.AddControllersWithViews().AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

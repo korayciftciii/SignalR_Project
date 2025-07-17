@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
         {
             if (about == null)
             {
-                return BadRequest("Reservation data is null");
+                return BadRequest("Contact data is null");
             }
             var existingAboutContent = _aboutService.TGetById(about.AboutId);
             if (existingAboutContent == null)
