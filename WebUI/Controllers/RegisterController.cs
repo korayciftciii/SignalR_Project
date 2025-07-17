@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Web.EntityLayer.Entities;
 using WebUI.DataTransferObjects.IdentityDtos;
 
 namespace WebUI.Controllers
 {
+    [Authorize]
     public class RegisterController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

@@ -1,0 +1,36 @@
+﻿
+@model CreateMailDto
+
+
+<h4 class="page-title">Send Mail</h4>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Mail Form</div>
+    </div>
+    <form method="post" asp-action="Index" asp-controller="Mail" asp-area="Admin" novalidate>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="Reciever">To</label>
+                <input type="email" asp-for="Reciever" class="form-control input-pill" />
+                <span asp-validation-for="Reciever" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject">Subject</label>
+                <input asp-for="Subject" type="text" class="form-control input-pill" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Body">Body </label>
+                <textarea rows="5" asp-for="Body" type="text" class="form-control input-pill" ></textarea>
+                <span asp-validation-for="Body" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-action">
+            <button class="btn btn-success" type="submit">
+                <i class="la la-save"></i> Send
+            </button>
+        </div>
+    </form>
+</div>

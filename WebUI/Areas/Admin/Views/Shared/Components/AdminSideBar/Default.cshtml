@@ -46,6 +46,12 @@
 					<p>Generate Table QR</p>
 				</a>
 			</li>
+			<li class="nav-item @(ViewBag.CurrentController == "Mail" ? "active" : "")">
+				<a asp-controller="Mail" asp-action="Index" asp-area="Admin">
+					<i class="la la-envelope"></i>
+					<p>Send Email</p>
+				</a>
+			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Category" ? "active" : "")">
 				<a asp-controller="Category" asp-action="Index" asp-area="Admin">
 					<i class="la la-tags"></i>
