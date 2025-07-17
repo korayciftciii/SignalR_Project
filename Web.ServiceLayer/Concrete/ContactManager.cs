@@ -39,6 +39,11 @@ namespace Web.ServiceLayer.Concrete
             _contactDAL.Insert(entity);
         }
 
+        public void TToggleContactStatusToTrue(int contactId)
+        {
+            _contactDAL.ToggleContactStatusToTrue(contactId);
+        }
+
         public void TUpdate(Contact entity)
         {
             _contactDAL.Update(entity);

@@ -9,6 +9,6 @@ namespace Web.ServiceLayer.Abstract
 {
    public interface IContactService : IGenericService<Contact>
     {
-
+        void TToggleContactStatusToTrue(int contactId);
     }
 }

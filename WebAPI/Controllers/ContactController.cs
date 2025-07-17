@@ -74,6 +74,17 @@ namespace WebAPI.Controllers
             _contactService.TInsert(entity);
             return CreatedAtAction(nameof(ContactGetById), new { id = entity.ContactId }, entity);
         }
-     
+
+        [HttpPut("ToggleContactStatusToTrue/{contactId}")]
+        public IActionResult ToggleContactStatusToTrue(int contactId)
+        {
+            var contact = _contactService.TGetById(contactId);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+            _contactService.TToggleContactStatusToTrue(contactId);
+            return Ok("Contact status toggled successfully.");
+        }
     }
 }

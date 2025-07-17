@@ -15,5 +15,14 @@ namespace Web.DataAccessLayer.EntityFramework
         public EFContactDAL(ApplicationContext context) : base(context)
         {
         }
+
+        public void ToggleContactStatusToTrue(int contactId)
+        {
+            using var context = new ApplicationContext();
+            var notification = context.Contacts
+                .FirstOrDefault(n => n.ContactId == contactId);
+            notification.IsRead = true; 
+            context.SaveChanges(); // değişikliği veritabanına kaydet
+        }
     }
 }

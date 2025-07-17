@@ -64,6 +64,12 @@
 					<p>Discounts</p>
 				</a>
 			</li>
+			<li class="nav-item @(ViewBag.CurrentController == "Contact" ? "active" : "")">
+				<a asp-controller="Contact" asp-action="Index" asp-area="Admin">
+					<i class="la la-comment"></i>
+					<p>Contact Messages</p>
+				</a>
+			</li>
 			<li class="nav-item @(ViewBag.CurrentController == "Slider" ? "active" : "")">
 				<a asp-controller="Slider" asp-action="Index" asp-area="Admin">
 					<i class="la la-th"></i>

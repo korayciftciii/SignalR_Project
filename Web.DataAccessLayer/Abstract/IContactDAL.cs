@@ -9,5 +9,6 @@ namespace Web.DataAccessLayer.Abstract
 {
   public   interface IContactDAL : IGenericDAL<Contact>
     {
+        void ToggleContactStatusToTrue(int contactId);
     }
 }
