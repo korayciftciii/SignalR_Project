@@ -5,6 +5,9 @@ using Web.DataAccessLayer.Concrete;
 using Web.DataAccessLayer.EntityFramework;
 using Web.ServiceLayer.Abstract;
 using Web.ServiceLayer.Concrete;
+using Web.ServiceLayer.ValidationRules.BookingValidations;
+using Web.ServiceLayer.ValidationRules.ContactValidations;
+using Web.ServiceLayer.ValidationRules.TestimonialValidations;
 using WebAPI.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -72,6 +75,11 @@ builder.Services.AddScoped<INotificationService, NotificationManager>();
 builder.Services.AddScoped<IContactDAL, EFContactDAL>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 // Add services to the container.
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateBookingValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateTestimonialValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateContactValidation>();
+
 
 builder.Services.AddControllersWithViews().AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 

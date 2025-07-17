@@ -13,5 +13,6 @@ namespace Web.DataTransferObject.TestimonialDTO
         public string? Comment { get; set; }
         public string? ImageUrl { get; set; }
         public bool CommentStatus { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

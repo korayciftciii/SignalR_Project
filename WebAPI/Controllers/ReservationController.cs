@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web.DataTransferObject.ReservationDTO;
@@ -13,11 +14,12 @@ namespace WebAPI.Controllers
     {
         private readonly IReservationService _reservationService;
         private readonly IMapper _mapper;
-
-        public ReservationController(IReservationService reservationService, IMapper mapper)
+        private readonly IValidator<CreateReservationDto> _validator;
+        public ReservationController(IReservationService reservationService, IMapper mapper, IValidator<CreateReservationDto> validator)
         {
             _reservationService = reservationService;
             _mapper = mapper;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -55,17 +57,19 @@ namespace WebAPI.Controllers
         [HttpPost]
         public IActionResult ReservationAdd(CreateReservationDto reservation)
         {
-            if (reservation == null)
+
+            var validationResult = _validator.Validate(reservation);
+            if (!validationResult.IsValid)
             {
-                return BadRequest("Reservation data is null");
+                return BadRequest(validationResult.Errors);
             }
 
-            // Map CreateReservationDto to Reservation entity (assuming you have a Reservation entity)
+
             var reservationEntity = _mapper.Map<Reservation>(reservation);
 
             _reservationService.TInsert(reservationEntity);
 
-            // Assuming Reservation entity has an Id property
+
             return CreatedAtAction(nameof(ReservationGetById), new { id = reservationEntity.ReservationId }, reservationEntity);
         }
         [HttpPut]

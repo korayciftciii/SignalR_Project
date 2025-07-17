@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web.DataTransferObject.AboutDTO;
@@ -14,10 +15,12 @@ namespace WebAPI.Controllers
     {
         private readonly IContactService _contactService;
         private readonly IMapper _mapper;
-        public ContactController(IContactService contactService, IMapper mapper)
+        private readonly IValidator<CreateContactDto> _validator;
+        public ContactController(IContactService contactService, IMapper mapper, IValidator<CreateContactDto> validator)
         {
             _contactService = contactService;
             _mapper = mapper;
+            _validator = validator;
         }
         [HttpGet]
         public IActionResult ActionContact()
@@ -66,9 +69,10 @@ namespace WebAPI.Controllers
         [HttpPost]
         public IActionResult ContactAdd(CreateContactDto contactDto)
         {
-            if (contactDto == null)
+           var validationResult = _validator.Validate(contactDto);
+            if (!validationResult.IsValid)
             {
-                return BadRequest("Contact  data is null");
+                return BadRequest(validationResult.Errors);
             }
             var entity = _mapper.Map<Contact>(contactDto);
             _contactService.TInsert(entity);

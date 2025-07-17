@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web.DataTransferObject.DiscountDTO;
@@ -13,12 +14,13 @@ namespace WebAPI.Controllers
     public class TestimonialController : ControllerBase
     {
         private readonly ITestimonialService _testimonialService;
-
+        private readonly IValidator<CreateTestimonialDto> _validator;
         private readonly IMapper _mapper;
-        public TestimonialController(IMapper mapper, ITestimonialService testimonialService)
+        public TestimonialController(IMapper mapper, ITestimonialService testimonialService, IValidator<CreateTestimonialDto> validator)
         {
             _mapper = mapper;
             _testimonialService = testimonialService;
+            _validator = validator;
         }
         [HttpGet]
         public IActionResult TestimonialList()
@@ -66,9 +68,10 @@ namespace WebAPI.Controllers
         [HttpPost]
         public IActionResult TestimonialAdd(CreateTestimonialDto createTestimonialDto)
         {
-            if (createTestimonialDto == null)
+           var validationResult = _validator.Validate(createTestimonialDto);
+            if (!validationResult.IsValid)
             {
-                return BadRequest("Testimonial data is null");
+                return BadRequest(validationResult.Errors);
             }
             // Map CreateTestimonialDto to Testimonial entity
             var testimonialEntity = _mapper.Map<Testimonial>(createTestimonialDto);
