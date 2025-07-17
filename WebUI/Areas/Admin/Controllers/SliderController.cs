@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
 using WebUI.DataTransferObjects.CategoryDtos;
@@ -7,6 +8,7 @@ using WebUI.DataTransferObjects.SliderDtos;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class SliderController : Controller
     {

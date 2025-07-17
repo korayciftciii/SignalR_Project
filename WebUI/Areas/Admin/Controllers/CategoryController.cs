@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using WebUI.DataTransferObjects.CategoryDtos;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class CategoryController : Controller
     {

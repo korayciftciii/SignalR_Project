@@ -1,0 +1,24 @@
+﻿<h4 class="page-title">QR Code Generator</h4>
+
+
+
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Create QR</div>
+	</div>
+	<form  method="post" asp-action="Index" asp-controller="QR" asp-area="Admin" >
+		<div class="card-body">
+			<input type="text" name="value" />
+		</div>
+		<div class="card-action">
+			<input type="submit" value="Generate QR Code" class="btn-warning btn" />
+		</div>
+	</form>
+	@if (ViewBag.QRImage != null)
+	{
+		<img src="@ViewBag.QRImage" alt="" style="width:400px;height:400px;" />
+	}
+
+
+</div>
+

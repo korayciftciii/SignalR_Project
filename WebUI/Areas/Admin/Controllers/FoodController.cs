@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using WebUI.DataTransferObjects.CategoryDtos;
@@ -6,6 +7,7 @@ using WebUI.DataTransferObjects.FoodDtos;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class FoodController : Controller
     {

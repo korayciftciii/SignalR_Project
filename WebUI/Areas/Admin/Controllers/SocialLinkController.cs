@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using WebUI.DataTransferObjects.SocialLinkDtos;
 
 namespace WebUI.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class SocialLinkController : Controller
     {
