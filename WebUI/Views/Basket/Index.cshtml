@@ -33,7 +33,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-light p-3 rounded shadow-sm">
                 <li class="breadcrumb-item">
-                    <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark">
+                    <a asp-controller="Home" asp-action="Index"  class="text-decoration-none text-dark">
                         <i class="bi bi-house-door"></i> Home
                     </a>
                 </li>
@@ -73,7 +73,7 @@
                                         <td>@item.Count</td>
                                         <td>$@item.TotalPrice</td>
                                         <td>
-                                            <a href="/Basket/BasketItemDelete?id=@item.BasketId" class="btn btn-outline-danger btn-sm">
+                                            <a href="#" onclick="getBasketId(@item.BasketId,@ViewBag.TableId); return false;" class="btn btn-outline-danger btn-sm">
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         </td>
@@ -125,7 +125,22 @@
         </div>
     </div>
 
-
+    <script>
+        function getBasketId(basketId,tableId) {
+            $.ajax({
+                type: "GET",
+                url: `/Basket/BasketItemDelete?basketId=${basketId}&tableId=${tableId}`,
+                success: function () {
+                    swal("Item removed from basket.", "", "success").then(() => {
+                        location.reload();
+                    });
+                },
+                error: function (xhr) {
+                    swal("Error", xhr.responseText || "Could not delete the item.", "error");
+                }
+            });
+        }
+    </script>
     @await Component.InvokeAsync("UIFooter")
     @await Component.InvokeAsync("UIScripts")
 </body>

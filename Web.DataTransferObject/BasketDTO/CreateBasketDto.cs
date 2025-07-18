@@ -13,6 +13,6 @@ namespace Web.DataTransferObject.BasketDTO
         public int Count { get; set; } = 1;
         public decimal TotalPrice { get; set; }
         public int FoodId { get; set; }
-      
+        public int RestaurantTableId { get; set; }
     }
 }

@@ -70,6 +70,16 @@ namespace Web.ServiceLayer.Concrete
            _restaurantTableDAL.Insert(entity);
         }
 
+        public void TToggleTableStatusToFalse(int tableId)
+        {
+            _restaurantTableDAL.ToggleTableStatusToFalse(tableId);
+        }
+
+        public void TToggleTableStatusToTrue(int tableId)
+        {
+            _restaurantTableDAL.ToggleTableStatusToTrue(tableId);
+        }
+
         public void TUpdate(RestaurantTable entity)
         {
           _restaurantTableDAL.Update(entity);

@@ -42,10 +42,10 @@
         <!-- end food section -->
     </div>
     <script>
-                   function getfoodid(value) {
+            function getfoodid(foodId,tableId) {
             $.ajax({
                 type: "POST",
-                url: `/Menu/AddToBasket/${value}`,
+                url: `/Menu/AddToBasket?foodId=${foodId}&tableId=${tableId}`,
                 success: function () {
                     swal("Your meal added to basket.", "", "success");
                 },

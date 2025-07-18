@@ -16,8 +16,8 @@
                     <li class="nav-item @(ViewBag.CurrentController == "Home" ? "active" : "")">
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
-                    <li class="nav-item @(ViewBag.CurrentController == "Menu" ? "active" : "")">
-                        <a class="nav-link" asp-controller="Menu" asp-action="Index">Menu</a>
+                    <li class="nav-item @(ViewBag.CurrentController == "Tables" ? "active" : "")">
+                        <a class="nav-link" asp-controller="Tables" asp-action="Index">Tables</a>
                     </li>
                     <li class="nav-item @(ViewBag.CurrentController == "About" ? "active" : "")">
                         <a class="nav-link" asp-controller="About" asp-action="Index">About</a>
@@ -28,7 +28,7 @@
                 </ul>
                 <div class="user_option">
                 
-                    <a class="cart_link" asp-controller="Basket" asp-action="Index">
+                    <a class="cart_link" asp-controller="Basket" asp-action="Index" asp-route-tableId="@ViewBag.TableId">
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                         <g>
                         <g>
@@ -82,11 +82,6 @@
                   </g>
                 </svg>
                     </a>
-                    <form class="form-inline">
-                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </form>
                     <a href="" class="order_online">
                         Order Online
                     </a>

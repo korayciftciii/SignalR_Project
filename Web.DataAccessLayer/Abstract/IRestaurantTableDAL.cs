@@ -14,5 +14,7 @@ namespace Web.DataAccessLayer.Abstract
         public int GetOccupiedTableCount();
         List<RestaurantTable> GetAvailableTables();
         List<RestaurantTable> GetOccupiedTables();
+        void ToggleTableStatusToTrue(int tableId);
+        void ToggleTableStatusToFalse(int tableId);
     }
 }

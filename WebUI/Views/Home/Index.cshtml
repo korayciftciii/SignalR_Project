@@ -13,10 +13,10 @@
             </h2>
         </div>
         @await Component.InvokeAsync("UIFoodFilterMenu")
-        @await Component.InvokeAsync("UIFoodFilterContent")
+        @await Component.InvokeAsync("UIFoodFilterContentHome")
         <div class="btn-box">
-            <a asp-controller="Menu" asp-action="Index">
-                View More
+            <a asp-controller="Tables" asp-action="Index">
+                Choose Your Table
             </a>
         </div>
     </div>

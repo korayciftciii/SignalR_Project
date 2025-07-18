@@ -14,5 +14,7 @@ namespace Web.ServiceLayer.Abstract
         public int GetOccupiedTableCount();
         List<RestaurantTable> TGetAvailableTables();
         List<RestaurantTable> TGetOccupiedTables();
+        void TToggleTableStatusToTrue(int tableId);
+        void TToggleTableStatusToFalse(int tableId);
     }
 }

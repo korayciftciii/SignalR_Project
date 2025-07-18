@@ -51,5 +51,21 @@ namespace Web.DataAccessLayer.EntityFramework
             var count =context.RestaurantTables.Count();
             return count;
         }
+
+        public void ToggleTableStatusToFalse(int tableId)
+        {
+            using var context = new ApplicationContext();
+            var table = context.RestaurantTables.FirstOrDefault(t => t.RestaurantTableId == tableId);
+            table.IsAvailable = false; // Tabloyu kullanılmaz yap
+            context.SaveChanges(); // Değişiklikleri veritabanına kaydet
+        }
+
+        public void ToggleTableStatusToTrue(int tableId)
+        {
+            using var context = new ApplicationContext();
+            var table=context.RestaurantTables.FirstOrDefault(t => t.RestaurantTableId == tableId);
+            table.IsAvailable = true; // Tabloyu kullanılabilir yap
+            context.SaveChanges(); // Değişiklikleri veritabanına kaydet
+        }
     }
 }

@@ -34,6 +34,28 @@ namespace WebAPI.Controllers
             }
             return Ok(value);
         }
+        [HttpPut("ToggleTableStatusToTrue/{tableId}")]
+        public IActionResult ToggleTableStatusToTrue(int tableId)
+        {
+            var table = _restaurantTableService.TGetById(tableId);
+            if (table == null)
+            {
+                return NotFound();
+            }
+            _restaurantTableService.TToggleTableStatusToTrue(tableId);
+            return Ok("Table status toggled successfully.");
+        }
+        [HttpPut("ToggleTableStatusToFalse/{tableId}")]
+        public IActionResult ToggleTableStatusToFalse(int tableId)
+        {
+            var table = _restaurantTableService.TGetById(tableId);
+            if (table == null)
+            {
+                return NotFound();
+            }
+            _restaurantTableService.TToggleTableStatusToFalse(tableId);
+            return Ok("Table status toggled successfully.");
+        }
         [HttpGet("GetAvailableTables")]
         public IActionResult GetAvailableTables()
         {

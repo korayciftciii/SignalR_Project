@@ -39,7 +39,7 @@ public class BasketController : ControllerBase
         _basketService.TInsert(new Web.EntityLayer.Entities.Basket()
         {
             FoodId = createBasketDto.FoodId,
-            RestaurantTableId = 1,
+            RestaurantTableId = createBasketDto.RestaurantTableId,
             Price = foodPrice,
             Count = createBasketDto.Count,
             TotalPrice = foodPrice * createBasketDto.Count
