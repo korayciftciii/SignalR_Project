@@ -1,6 +1,13 @@
 MIT License
 
 Copyright (c) 2025 Koray Çiftçi
+Email: ciftci.koray@outlook.com
+Portfolio: https://korayciftci.vercel.app/
+GitHub: https://github.com/korayciftciii/SignalR_Project
+
+PROJECT: SignalR Restaurant Management System
+DESCRIPTION: A comprehensive, real-time restaurant management system built with 
+ASP.NET Core, SignalR, and modern web technologies.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +26,49 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+================================================================================
+
+THIRD-PARTY LIBRARIES AND FRAMEWORKS:
+
+This software makes use of the following third-party libraries and frameworks,
+each subject to their own respective licenses:
+
+• ASP.NET Core - Microsoft (MIT License)
+• Entity Framework Core - Microsoft (MIT License)
+• SignalR - Microsoft (MIT License)
+• AutoMapper - (MIT License)
+• FluentValidation - (Apache License 2.0)
+• Bootstrap - (MIT License)
+• jQuery - (MIT License)
+
+For the complete list of dependencies and their licenses, please refer to the
+project's package configuration files.
+
+================================================================================
+
+ADDITIONAL TERMS:
+
+1. ATTRIBUTION: When redistributing this software or substantial portions of it,
+   you must include proper attribution to the original author (Koray Çiftçi)
+   and maintain a link to the original repository.
+
+2. COMMERCIAL USE: This software may be used for commercial purposes under the
+   terms of the MIT License. However, we appreciate attribution and notification
+   of commercial use.
+
+3. CONTRIBUTIONS: Contributions to this project are welcome and will be subject
+   to the same MIT License terms. By contributing, you agree to license your
+   contributions under the MIT License.
+
+4. TRADEMARK: This license does not grant permission to use the trade names,
+   trademarks, service marks, or product names of the contributor, except as
+   required for reasonable and customary use in describing the origin of the
+   Software.
+
+================================================================================
+
+For questions regarding this license or the software, please contact:
+Koray Çiftçi - ciftci.koray@outlook.com
+
+Last Updated: January 2025
